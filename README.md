@@ -1,5 +1,4 @@
 # chattenger
-# chattenger
 
 I have worked roughly around a month on this chattenger and of course,I learnt a lot new things.
 Here are some quick views of what you can do with this chat web app:
