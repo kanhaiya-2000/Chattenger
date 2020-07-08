@@ -40,15 +40,16 @@ function generateRoom(){
   return room;
 }
 io.on('connection', function(socket) {
-  /*var transporter = nodemailer.createTransport({
+  /*Tried experimenting with email notification,but it crashed heroku server while working fine on localhost
+  var emailtransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: '',
-        pass: 'kk1234567890!!'
+        pass: ''
     }
 });*/
 socket.on('verifyingcurrent',function(data){
-  /*transporter.sendMail({
+  /*emailtransporter.sendMail({
     from: 'leapkk58@gmail.com',
       to: 'kanhaiya_k@cs.iitr.ac.in',
       subject: 'new User login',
