@@ -3,43 +3,32 @@
 
 Chattenger is a node server based web application that enables you to establish real-time communication with your friends across the globe.
 
+> Techniques and languages that were used
 
->Techniques and languages that were used
-
--HTML
-
--CSS
-
--JS
-
--Jquery
-
--AJAX
-
--Socket.io
-
--Nodejs
-
--Webrtc
-
--FileReader API
-
--Canvas filtering and image manipulation
-
--External API(like Gifskey api,tenor api,deezer api,imgur api)
+- HTML
+- CSS
+- JS
+- Jquery
+- AJAX
+- Socket.io
+- Nodejs
+- Webrtc
+- FileReader API
+- Canvas filtering and image manipulation
+- External API(like Gifskey api,tenor api,deezer api,imgur api)
 
 
->Features
+> Features
 
 
 ## 1.Security
 
-I have worked considerably on security factor,your password and admin key for your personal room is now securely stored after hasing with passwordHASH.
+Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.
 
 ## 2.High quality video and voice calls
 
 The quality of video call actually depends on the camera resolution of your device and internet connection(As applicable for all applications),you can make multiple video or voice chat with your room members.Screensharing option is also available on supported desktop browsers(chrome,firefox,opera or Edge).
-kindly check <a href="https://caniuse.com/#search=webrtc">here</a> for your browser support before attempting to make a call.Recent versions of safari are now supporting webrtc,however still safari has problem in webrtc implementations on some of the devices.So if you are using this application with iphone or ipad,it's not sure whether your device will support webrtc or not.
+kindly check <a href="https://caniuse.com/#search=webrtc">here</a> for your browser support before attempting to make a call.Recent versions of safari are now supporting webrtc,however still safari has problem in webrtc implementations on some of the devices.So if you are using this application on iphone or ipad,it's not sure whether your device will support webrtc or not.
 
 ## 3.Administration
 
