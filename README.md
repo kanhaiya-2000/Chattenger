@@ -15,7 +15,7 @@ Chattenger is a node server based web application that enables you to establish 
 - Webrtc
 - FileReader API
 - Canvas filtering and image manipulation
-- External API(like Gifskey api,tenor api,deezer api,imgur api)
+- External API(like Giphy api,tenor api,deezer api,imgur api)
 
 
 > Features
