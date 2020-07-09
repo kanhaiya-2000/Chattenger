@@ -3,21 +3,34 @@
 
 Chattenger is a node server based web application that enables you to establish real-time communication with your friends across the globe.
 
+
 >Techniques and languages that were used
 
 -HTML
+
 -CSS
+
 -JS
+
 -Jquery
+
 -AJAX
+
 -Socket.io
+
 -Nodejs
+
 -Webrtc
+
 -FileReader API
+
 -Canvas filtering and image manipulation
+
 -External API(like Gifskey api,tenor api,deezer api,imgur api)
 
+
 >Features
+
 
 ## 1.Security
 
@@ -54,11 +67,15 @@ There are much more things one can explore while using that i am not mentioning 
 
 Now profile pic can be added and will remain saved to your browser even if you refresh your browser.You have options to change fonts,text-color and text-size(font-size) as per your convenience.These all styles and fonts will also remain saved untill you update it.
 
+
 > Credits
+
 
 socket.io and webrtc are the most important things that made this project relevantly saucy.My heartful thanks to #webrtc and #socket.io developers for building such cools technology.
 
+
 > Demo/pics
+
 
 ### chat demo::
 
