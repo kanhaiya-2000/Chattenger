@@ -1,5 +1,14 @@
+
+<!--
+//  The code was originally in its minified form but was then beautified ....
+//  You can take actual minified code from the following link 
+//  view-source:https://chattenger.herokuapp.com
+// API keys here may or may not work in your case
+// Take your own api key from official site of giphy , tenor,imgur and RapidAPI
+    -->
+
 <!DOCTYPE html>
-<html>
+<html lang='en'>
     <head>
         <title>Chattenger</title>
         <meta name="viewport" id="content" content="width=device-width,initial-scale=1.0,user-scalable=no" />
@@ -1358,6 +1367,7 @@
             </div>
         </div>
         <script>
+            //Saving bandwidth in calls(mainly video call) by compromosing with quality
             $("#datasaver").click(function () {
                 this.checked ? localStorage.setItem("datasaver", "yes") : localStorage.setItem("datasaver", "no");
             });
@@ -1378,12 +1388,13 @@
                     window.history.replaceState({}, document.title, "/");
                 }
             }
+            //uploading pic to imgur
             function uploadToImgur(e) {
                 url = "https://api.imgur.com/3/upload/";
                 var t = new XMLHttpRequest();
                 (t.responseType = "json"),
                     t.open("POST", url),
-                    t.setRequestHeader("Authorization", "Client-ID 62daa59af836a43"),
+                    t.setRequestHeader("Authorization", "Client-ID 62daa59af734a43"),
                     (t.onload = function () {
                         var e = t.response;
                         e.success
@@ -1410,6 +1421,7 @@
                         $(".messagemain").css("font-size", e.value + "em"), (window.textsize = e.value + "em"), localStorage.setItem("textsize", e.value + "em");
                 }
             }
+            //inviting other people to join the room through a direct link
             async function inviteParticipant() {
                 localStorage.getItem("shareinstruction") ||
                     (Renderconfirm("Make sure that admin didn't change group password after your joining otherwise shared link will not work.If you are admin of this group,then safely disregard the above warning", !0),
@@ -1443,6 +1455,7 @@
                     $("#message-container").append("<p class='info' style='color:red;background:black'>It appears that you cleared cookies and site-data.<br>Error in sharing!</p>"),
                         (document.getElementById("message-container").scrollTop = document.getElementById("message-container").scrollHeight);
             }
+            //Adjusting avatar or profile pic
             function adjust(e, t) {
                 if (e.naturalWidth < e.naturalHeight) (e.style.transform = "scale(" + e.naturalHeight / e.naturalWidth + ")"), t ? (e.style.marginRight = "10px") : (e.style.marginLeft = "10px");
                 else {
@@ -1455,6 +1468,7 @@
                     e.style.transform = "scale(0.8)";
                 }
             }
+            //Displaying most of the alert messages through this function
             function Renderconfirm(e, t = !1) {
                 $("#login").hide(),
                     document.getElementById("rendering") && $("#rendering").remove(),
@@ -1570,7 +1584,7 @@
                     crossDomain: !0,
                     url: "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + e,
                     method: "GET",
-                    headers: { "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com", "x-rapidapi-key": "e75b82589emsh44c3cf7878e7c2ep1e34e6jsn60b573a53158" },
+                    headers: { "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com", "x-rapidapi-key": "e75bhf589emsh44c3cf7878e7c2ep1jke34e6jsn60b573a5318" },
                 };
                 relayintervalinmusic = setTimeout(function () {
                     $.ajax(i).done(function (e) {
@@ -1783,7 +1797,7 @@
                     });
             }
             function findgif(e) {
-                httpGetAsync("https://api.tenor.com/v1/search?q=" + e.split(" ").join("+") + "&key=21OLA3OK9FG5&limit=50", tenorCallback_search);
+                httpGetAsync("https://api.tenor.com/v1/search?q=" + e.split(" ").join("+") + "&key=21Ohg3OK99FFG5&limit=50", tenorCallback_search);
             }
             function httpGetAsync(e, i) {
                 var s = new XMLHttpRequest();
@@ -1804,7 +1818,7 @@
                 }
                 document.getElementById("emogi").scrollTo(0, 40),
                     setTimeout(function () {
-                        $.get("https://api.giphy.com/v1/gifs/search?q=" + $("#srchgif").val().toLowerCase().split(" ").join("+") + "&api_key=eVgQxUlJ01biXxZDpWmuCDwRzdX0VdCn&limit=100").done(function (e) {
+                        $.get("https://api.giphy.com/v1/gifs/search?q=" + $("#srchgif").val().toLowerCase().split(" ").join("+") + "&api_key=eVgQxUlJ01biXpZDpWfguCDwRznX0VdCn&limit=100").done(function (e) {
                             for (let i = 0; i < e.data.length; i++) {
                                 console.log(window.left), s[i + window.left].setAttribute("data-src", e.data[i].images.preview_gif.url);
                                 s[i + 50].id = e.data[i].images.original.url;
@@ -2150,7 +2164,7 @@
                                     (document.getElementById("emogi").scrollTop = 0), $("#allstickers img").css("display", "none"), e && clearTimeout(e);
                                     var k = $("#srchstickers").val().toLowerCase();
                                     e = setTimeout(function () {
-                                        $.get("https://api.giphy.com/v1/stickers/search?q=" + k.split(" ").join("+") + "&api_key=eVgQxUlJ01biXxZDpWmuCDwRzdX0VdCn&limit=100")
+                                        $.get("https://api.giphy.com/v1/stickers/search?q=" + k.split(" ").join("+") + "&api_key=eVgQxUlJ01biXbvDpWmuChwRzd00Vd9n&limit=100")
                                             .done(function (e) {
                                                 for (let s = 0; s < e.data.length; s++) {
                                                     i[s].setAttribute("data-src", e.data[s].images.preview_gif.url);
