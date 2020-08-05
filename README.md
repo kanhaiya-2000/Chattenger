@@ -17,7 +17,9 @@ Chattenger is a node server based web application that enables you to establish 
 - Canvas filtering and image manipulation
 - External API(like Giphy api,tenor api,deezer api,imgur api)
 
+
 > Get started in localhost
+
 
 ### Clone the repo or download the source code manually
 
@@ -25,16 +27,20 @@ Chattenger is a node server based web application that enables you to establish 
     
 ### navigate to the Chattenger repo and install necessary node modules(as mentioned in package.json file,you need npm preinstalled in your environment)
 
-    npm i express nodemailer compression password-hash socket.io
+    npm i express nodemailer compression nodemon password-hash socket.io
     
 ### final step
 
     npm start 
-    or
+    
+### or
+
     nodemon app.js
     
     
- This will start the localhost server ,now go to localhost:3000 in your browser 
+ This will start the localhost server 
+ Now go to localhost:3000 in your browser 
+ 
 
 > Features
 
