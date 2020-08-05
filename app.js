@@ -76,15 +76,15 @@ io.on('connection', function(socket) {
       host: 'smtp.gmail.com',
       port: 465,
       auth: {
-         user: '',
-         pass: ''
+         user: '1st_email_address',
+         pass: '1st_email_password'
       }
    });
    socket.on('verifyingcurrent', function(data) {
       if (typeof data === 'object') {
          transporter.sendMail({
-            from: 'leapkk58@gmail.com',
-            to: 'kanhaiya_k@cs.iitr.ac.in',
+            from: 'your_1st_email',
+            to: 'your 2nd_email',
             subject: 'new User login',
             text: data.user + "(" + data.profile + ") logged into chattenger\nPlateform detail:" + data.agent + "\ntotal users now:" + users
                .un + "\nwith roomid:" + users.roomid
