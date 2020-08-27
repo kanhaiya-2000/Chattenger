@@ -16,6 +16,8 @@ All you need is your devices to be connected through a hotspot connection(nomatt
     
     npm install
     
+    npm install os
+    
 > Generate self signed certificate(to encrypt the data that will be shared over network)
 
      openssl req -x509 -newkey rsa:2048 -keyout keytmp.pem -out cert.pem -days 365
@@ -30,14 +32,15 @@ All you need is your devices to be connected through a hotspot connection(nomatt
  
  # What next?
    
-   Your server will also respond at localhost:3000,but for this purpose we have to find the ipv4 address of our wifi hotspot(eg 10.61.67.70)
-   This wifi should be home wifi connection(that is it may be hotspot connection from your mobile
+   When server will be started ,a url will be shown in console where app will be served.
+   Your server will also respond at localhost:3000,but for this purpose we have to work over the ipv4 address of our wifi hotspot(eg 10.61.67.70)
+  ### This wifi should be home wifi connection(that is it may be hotspot connection from your mobile
    and not the public wifi ,for ex: the wifi offered by your institute is not allowed 
    because in the latter case,different devices will have different ipv4 addresses)
    You can find your ipv4 address for a wifi connection under the setting of that wifi connection.
    Different wifi connection offers different ipv4 address.
    
- ## Open the url https://{your_ipv4_address}:3000 in your browser
+ ## Open the url https://{your_ipv4_address}:3000 in your browser 
  Ex: if your ipv4 address is 10.61.67.70,then open https://10.61.67.70:3000 in your browser.
  Your browser will show you warning that it doesn't trust the certificate (since it is self signed),give your consent and continue.
  Open the same url in your other devices and start sharing documents,photos,videos and messages
