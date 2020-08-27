@@ -9,7 +9,8 @@ All you need is your devices to be connected through a hotspot connection(nomatt
 # Get started
 
 > Copy the entire offline folder into your local disc
-    Alternatively <a href="https://downgit.github.io/#/home?url=https://github.com/kanhaiya-2000/Chattenger/tree/master/offline" download>Click</a> here to download
+
+    Alternatively <a href="https://downgit.github.io/#/home?url=https://github.com/kanhaiya-2000/Chattenger/tree/master/offline" download>Click</a> here to download and then extract the zip file.
 
 > navigate to offline repo and to install all necessary modules run 
     
@@ -29,12 +30,12 @@ All you need is your devices to be connected through a hotspot connection(nomatt
  
  # What next?
    
-   Your server will also respond at localhost:3000,but what for this purpose we have to find the ipv4 address of our wifi hotspot(eg 10.61.67.70)
+   Your server will also respond at localhost:3000,but for this purpose we have to find the ipv4 address of our wifi hotspot(eg 10.61.67.70)
    This wifi should be home wifi connection(that is it may be hotspot connection from your mobile
    and not the public wifi ,for ex: the wifi offered by your institute is not allowed 
-   because in the latter case,different devices have different ipv4 addresses)
+   because in the latter case,different devices will have different ipv4 addresses)
    You can find your ipv4 address for a wifi connection under the setting of that wifi connection.
-   Different wifi connection offers different ipv4 addresses.
+   Different wifi connection offers different ipv4 address.
    
  ## Open the url https://{your_ipv4_address}:3000 in your browser
  Ex: if your ipv4 address is 10.61.67.70,then open https://10.61.67.70:3000 in your browser.
