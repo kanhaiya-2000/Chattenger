@@ -47,14 +47,20 @@ All you need is your devices to be connected through a hotspot connection(nomatt
 ## for http version
  If you don't want to use https,you must modify <a href="app.js">app.js</a> file.You should replace https module with http and httpsoptions object should be ommitted.Also since max age of cache is set to 300 days,your modified files(static files) will not be noticed by the browser unless you disable or clear the cache or open the url in a new private window(incognito mode)
  
- <code>
+ <script type="text/javascript">
  //replace the first 15 lines with the following
  var express = require('express'),
+ 
    helmet = require('helmet'),
+   
    app = express();
+   
  var http = require('http');
+ 
  let PORT = 3000;
+ 
  var server = http.createServer(app).listen(PORT, function() {
+ 
    console.log('listening on port:'+PORT);
 });
- </code>
+ </script>
