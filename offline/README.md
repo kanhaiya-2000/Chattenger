@@ -61,3 +61,11 @@ All you need is your devices to be connected through a hotspot connection(nomatt
 });
 
 ```
+# Features
+> You have access to all features of chattenger over https protocol(offline)
+
+    Example: offline chats,file sharing.However gif, stickers or music are not available offline.
+
+>Faster file sharing
+
+    File sharing is troubleless and much more faster with higher success rate
