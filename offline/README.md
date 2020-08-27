@@ -10,7 +10,7 @@ All you need is your devices to be connected through a hotspot connection(nomatt
 
 > Copy the entire offline folder into your local disc
 
-    Alternatively <a href="https://downgit.github.io/#/home?url=https://github.com/kanhaiya-2000/Chattenger/tree/master/offline" download>Click</a> here to download and then extract the zip file.
+ Alternatively <a href="https://downgit.github.io/#/home?url=https://github.com/kanhaiya-2000/Chattenger/tree/master/offline" download>Click</a> here to download and then extract the zip file.
 
 > navigate to offline repo and to install all necessary modules run 
     
