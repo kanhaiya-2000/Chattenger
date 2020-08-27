@@ -2,7 +2,7 @@ var express = require('express'),
    helmet = require('helmet'),
    app = express();
 var https = require('https');
-const fs = require('fs');
+const fs = require('fs');  
 const httpsOptions = {
    //make sure you have created your own self signed certificate.Steps for how to create certificates have been described in readme file
   //without https ,you would not be able to access features like offline video and voice calls
@@ -11,8 +11,19 @@ const httpsOptions = {
 }
 let PORT = 3000;
 var server = https.createServer(httpsOptions, app).listen(PORT, function() {
-   console.log('listening on port:'+PORT);
+   console.log('listening on port:'+PORT);     
 });
+const o = require('os');
+const r = {}; 
+//require('os').networkInterfaces() return an object with ipv4 and ipv6 addresses(both internal and non-internal)
+for (let i of Object.keys(o.networkInterfaces())) {
+    for (const net of o.networkInterfaces()[i]) {
+        // interseted in ipv4 and non-internal(from hotspot) address
+        if (net.family === 'IPv4' && !net.internal) {            
+            console.log('app is served on https://'+net.address+':3000');
+        }
+    }    
+}
 var io = require('socket.io')(server);
 var compression = require('compression')
 var passwordHash = require('password-hash');
@@ -101,7 +112,7 @@ function generateRoom() {
    for (var r = 0; r < 8; r++) room += charsall.substr(Math.floor(Math.random() * charsall.length), 1);
    return room;
 }
-io.on('connection', function(socket) {    
+io.on('connection', function(socket) {
    socket.on('verifyingcurrent', function(data) {
       
    })
