@@ -4,7 +4,7 @@ The main aim of this extension is to add features of offline file sharing over w
 All we need internet is for loading the page in our browser for the first time(will cost around 1-2MB).
 After successful loading,internet is no longer needed.
 If your protocol is https,you can even establish offline video or voice chats.
-All you need is your devices to be connected through a same wifi connection(may be your mobile hotspot or any public wifi,no matter whether the connection has active or inactive internet).
+All you need is your devices to be connected through a same wifi connection(may be your mobile hotspot or any other wifi,no matter whether the connection has active or inactive internet).
 
 # Get started
 
@@ -14,9 +14,7 @@ All you need is your devices to be connected through a same wifi connection(may 
 
 > navigate to offline repo and to install all necessary modules run 
     
-    npm install
-    
-    npm install os
+    npm install    
     
 > Generate self signed certificate(to encrypt the data that will be shared over network and for offline video chatting access)
 
@@ -32,18 +30,18 @@ All you need is your devices to be connected through a same wifi connection(may 
  
  # What next?
    
-   When server will be started ,a url will be shown in console where app will be served.
+   When server will be started ,one or more urls will be shown in console where app will be served.
    
    <img src="https://i.imgur.com/M0G7zS7.gif">
    
  ## Open the url https://{your_ipv4_address}:3000 in your browser 
- Now open https://10.61.67.70:3000 in your browser.
+ Now open any one of url in your browser.
  Your browser will show you warning that it doesn't trust the certificate (since it is self signed),give your consent and continue.
- Open the same url in your other devices and start sharing documents,photos,videos and messages 
- you can also work without https but then connection will not be encrypted and you will not be able to make offline video or voice chats.
+ Open the same url in your all other connected devices and start sharing documents,photos,videos and messages  after creating a room
+ you can also work without https but then connection will not be encrypted and you may not be able to make offline video or voice chats.
  
 ## for http version
- If you don't want to use https,you must modify <a href="app.js">app.js</a> file.You should replace https module with http and httpsoptions object should be ommitted.Also since max age of cache is set to 300 days,your modified files(static files) will not be noticed by the browser unless you disable or clear the cache or open the url in a new private window(incognito mode)
+ If you don't want to use https,you must modify <a href="app.js">app.js</a> file.You should replace https module with http and httpsoptions object should be ommitted.Also since max age of cache is set to 300 days,any changes in your modified files(files in public folder) will not be noticed by the browser unless you disable or clear the cache or open the url in a new private window(incognito mode)
  
 ```js
 
@@ -67,3 +65,7 @@ All you need is your devices to be connected through a same wifi connection(may 
 >Faster file sharing
 
     File sharing is troubleless and much more faster with higher success rate
+    
+>All files shared are stored in <a href='public/storage'>storage</a> folder.
+
+    This is desirable as it features to download files from server hence waiving off load on browser to convert it to blob( which is largely memory and cpu intensive for larger-sized files).File is removed from the storage as soon as the person who shared it deleted the message.
