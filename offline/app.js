@@ -359,6 +359,15 @@ io.on('connection', function(socket) {
 
          } 
       })
+   socket.emit('clearmemory',function(data){
+      //this is for clearing memory because file upload was aborted so these objects are no longer required
+
+      //this check is neccessary to ensure that noone should illegely change the value of calloffer for other clients..
+      //clloffer is required to authenticate that the person was actually invited to the video or voice calls otherwise it is possible that anyone can join a call
+      //by knowing callroom and running in console socket.emit('offeraccepted',{proper_condition});
+      if(typeof clloffer[data]!='boolean'&&typeof clloffer[data+'d']!='boolean')
+         clloffer[data] = clloffer[data+'d'] = null;
+   })
    socket.on('disconnectmember', function(data) {
       if (typeof data === 'object') {
          if ((rooms.admin[rooms.roomsid.indexOf(data.roomid)] == data.user) && (users.id[users.un.indexOf(data.user)] == socket.id) && (data.auth ==
@@ -456,6 +465,8 @@ io.on('connection', function(socket) {
             let target = users.id[users.un.indexOf(value.target)];
             clloffer[value.target + '_' + value.callroom] = true;
             clloffer[value.user+ '_' + value.callroom] = true;
+            //here clloffer was set to true so that later in offeraccepted and sdp transfeering event ,it makes sure that clients who are
+            //sharing their sdp are authenticated clients for that specific callroom
             console.log('initiating offer allow\nFrom id:', socket.id, 'To:', target);
             io.to(target).emit('sendingoffer', JSON.stringify(value));
          }
