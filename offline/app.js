@@ -18,9 +18,9 @@ const r = {};
 //require('os').networkInterfaces() return an object with ipv4 and ipv6 addresses(both internal and non-internal)
 for (let i of Object.keys(o.networkInterfaces())) {
     for (const net of o.networkInterfaces()[i]) {
-        // interseted in ipv4 and non-internal(from hotspot) address
+        // interseted in ipv4 and non-internal(from hotspot) addresses
         if (net.family === 'IPv4' && !net.internal) {            
-            console.log('app is served on https://'+net.address+':3000');
+            console.log('Go to https://'+net.address+':3000');
         }
     }    
 }
@@ -29,30 +29,6 @@ var compression = require('compression')
 var passwordHash = require('password-hash');
 app.use(compression());
 app.use(helmet.frameguard({ action: 'DENY' }));
-
-
-
-//comment out this code if u r not using https 
-
-
-app.use(async (req, res, next) => {
-  await next();
-  if(process.env.NODE_ENV=='production'){
-     if(req.headers['x-forwarded-proto'] !== 'https')
-      res.redirect('https://'+req.headers.host); 
-  }
-  //if u really want strict content policy then,replace the localhost with your ipv4 address (eg: 10.61.69.70 otherwise leave it commented)
-  
-  //res.setHeader('content-security-policy',"default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://api.imgur.com https://*.tenor.com https://*.giphy.com https://deezerdevs-deezer.p.rapidapi.com https://cdns-preview-9.dzcdn.net blob: https://cdns-images.dzcdn.net http://localhost:3000 https://kit-free.fontawesome.com https://fonts.gstatic.com wss: ;child-src 'none'; frame-src 'none'; object-src 'none';media-src 'self' http://localhost:3000 blob: data: https: ;base-uri 'self';script-src 'self' 'unsafe-inline' https://ipinfo.io https://chattenger.herokuapp.com http://localhost:3000 ;img-src https: http://localhost:3000 blob: data: ;upgrade-insecure-requests")  
-  
-  res.setHeader('X-Content-Type-Options','nosniff');
-  res.setHeader('Access-Control-Allow-Origin', 'https://cdnjs.cloudflare.com https://api.imgur.com https://api.giphy.com https://media.tenor.com https://deezerdevs-deezer.p.rapidapi.com https://cdns-images.dzcdn.net');
-});
-
-
-//upto here
-
-
 app.use(express.static('public',{maxAge:'300d'}));
 app.get('/*',(req,res)=>{  
       res.redirect('/');
@@ -325,7 +301,7 @@ io.on('connection', function(socket) {
          } else socket.emit('serverangry');
       }
    });
-   socket.on('sendingfile', function(datas) {
+   /*socket.on('sendingfile', function(datas) {
       if (typeof datas === 'object') {
          if (redlist.indexOf(datas.user) == -1) {
             if (users.un.indexOf(datas.user) == -1 && users.id.indexOf(socket.id) == -1 && (rooms.roomSecret.indexOf(datas.auth) > -1) && (datas
@@ -346,7 +322,43 @@ io.on('connection', function(socket) {
                .broadcast.to(datas.roomid).emit('newmsgfile', datas);
          } else socket.emit('serverangry');
       }
-   });
+   });*/
+ //changes were made to store the file in a directory instead of converting it to blob for waiving off system restriction in file sharing
+   socket.on('sendingfile',(data)=>{
+      if (typeof data === 'object') {
+         if (redlist.indexOf(data.user) == -1) {
+            if (users.un.indexOf(data.user) == -1 && users.id.indexOf(socket.id) == -1 && (rooms.roomSecret.indexOf(data.auth) > -1) && (data
+                  .auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)])) {
+               users.un.push(data.user);
+               users.roomid.push(data.roomid);
+               users.id.push(socket.id);
+               socket.join(data.roomid);
+               if (videocallusers.un.indexOf(data.user) > -1) videocallusers.id[videocallusers.un.indexOf(data.user)] = socket.id;
+               if (voicecallusers.un.indexOf(data.user) > -1) voicecallusers.id[voicecallusers.un.indexOf(data.user)] = socket.id;
+               io.to(data.roomid).emit('reconnecteds', {
+                  userconnected: data.user,
+                  userNow: getUser(data.roomid)
+               });
+            }
+            io.to(data.roomid).emit('updateuser', getUser(data.roomid));
+            //i am using clloffer object here...because i dont want to define another object for the same
+            if(!clloffer[data.id+'d'])
+               clloffer[data.id+'d'] = [];                    
+            clloffer[data.id+'d'].push(data.data);
+               
+            if(data.init >= 1024 * data.fsize){
+               var newPath = data.name.split('.').length>1?  __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
+               clloffer[data.id] = fs.createWriteStream(newPath);
+               clloffer[data.id].write(Buffer.concat(clloffer[data.id+'d']));
+               clloffer[data.id] = clloffer[data.id+'d'] = null;
+               data.url = data.name.split('.').length>1? "/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: "/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
+               if ((rooms.roomSecret.indexOf(data.auth) > -1) && (data.auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)]))
+                  io.to(data.roomid).emit('newmsgfile', data);
+            }
+         }else socket.emit('serverangry');
+
+         } 
+      })
    socket.on('disconnectmember', function(data) {
       if (typeof data === 'object') {
          if ((rooms.admin[rooms.roomsid.indexOf(data.roomid)] == data.user) && (users.id[users.un.indexOf(data.user)] == socket.id) && (data.auth ==
@@ -392,10 +404,21 @@ io.on('connection', function(socket) {
    socket.on('delete', function(data) {
       if (typeof data === 'object') {
          if (users.id[users.un.indexOf(data.user)] == socket.id && data.para == 'right' && users.roomid[users.un.indexOf(data.user)] == data
-            .roomid && (data.auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)])) io.to(data.roomid).emit('deleting', {
-            id: data.msgid,
-            owner: data.user
-         });
+            .roomid && (data.auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)])){
+            if(data.fileinfo){ 
+               fs.unlink(__dirname+'/public/storage/'+data.fileinfo,(err)=>{
+                  console.log(err);
+                  if(err)
+                  socket.emit('securitydanger','There was a problem in deleting your file')
+               else
+                  io.to(data.roomid).emit('deleting', {id: data.msgid,owner: data.user});
+               });
+            }
+            else{
+               io.to(data.roomid).emit('deleting', {id: data.msgid,owner: data.user});
+            }
+            
+         }
       }
    });
    socket.on('istyping', function(data) {

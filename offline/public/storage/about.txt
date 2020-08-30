@@ -1,0 +1,1 @@
+This folder is for the purpose of storing files that will be shared over network.This is attempted as it is intended to make file sharing system independent and larger files (of even gb size would be transferred without any crash of browser)
