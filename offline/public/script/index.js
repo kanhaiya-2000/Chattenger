@@ -781,11 +781,11 @@ async function handleUpload(e) {
             (percent = 0),
             $("#whole").append(
                 $(
-                    "<i class='fa fa-close' title='close display' id='" +
+                    "<i class='fa fa-close' title='cancel uploading this file' id='" +
                         i +
-                        "cross' style='float:left;clear:both;position:fixed;top:50px;font-size:1.5em;margin-left:10px;z-index:500000;' onclick='$(this).hide();$(this).next().next().hide(200);'></i><div id='" +
-                        i +
-                        "progress' style='min-width:140px;clear:both;z-index:50000;text-align:center;float:left;background:green;height:20px;position:fixed;top:50px;border-radius:8px;'>" +
+                        "cross' style='float:left;clear:both;position:fixed;top:60px;font-size:1.5em;margin-left:10px;z-index:500000;' onclick='$(this).next().next().hide(200);$(this).next().next().remove();$(this).remove();fread.abort();'></i><div id='" 
+                        +i +
+                        "progress' style='min-width:140px;clear:both;z-index:50000;text-align:center;float:left;background:green;height:40px;position:fixed;top:50px;border-radius:12px;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;'><small style='font-size:0.6em;white-space: nowrap;margin-left:20px;'>" +e.file.name+'</small><br>'+
                         percent +
                         "%</div>"
                 )
@@ -794,6 +794,12 @@ async function handleUpload(e) {
             (slice = e.file.slice(s, s + bar)), await fread.readAsArrayBuffer(slice);
         };
         s(init),
+            fread.onabort = ()=>{
+                (filequeue.shift(),
+                window.currentlyUploading = false,
+                filequeue[0]&&handleUpload(filequeue[0]),
+                socket.emit('clearmemory',i))
+            }
             fread.onload = function (e) {
                 /*if (init < e.target.result.byteLength) {
                     refertemp = e.refer;
@@ -801,7 +807,8 @@ async function handleUpload(e) {
                 (init += e.target.result.byteLength), (percent = ((100 * init) / (1024 * fsize)).toFixed(3)),
                  t = $(window).width() <= 700 ? $(window).width() : 600,
                 (document.getElementById(i + "progress").style.width = (t * Number(percent)) / 100 + "px"),
-                    (document.getElementById(i + "progress").textContent = percent + "%"),
+                    (document.getElementById(i + "progress").innerHTML = "<small style='font-size:0.6em;overflow:hidden;padding-right:20px;padding-left:20px'>" +e.target.fileName+'</small><br>'+
+                          percent + "%"),
                     //temp[i].push(e.target.result),
                     /*(window.filename = e.target.fileName),*/
                     socket.emit("sendingfile", {
