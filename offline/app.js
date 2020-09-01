@@ -61,9 +61,10 @@ let voicecallusers = {
    room: [],
    profile: []
 };
-let clloffer = {};
 let redlist = [];
-
+setInterval(()=>{
+   global.gc();
+},8000)
 function getUser(roomid) {
    return users.un.filter(function(e) {
       if (users.roomid[users.un.indexOf(e)] == roomid) return e;
@@ -89,6 +90,7 @@ function generateRoom() {
    return room;
 }
 io.on('connection', function(socket) {
+   let clloffer = {};
    socket.on('verifyingcurrent', function(data) {
       
    })
@@ -345,12 +347,17 @@ io.on('connection', function(socket) {
             if(!clloffer[data.id+'d'])
                clloffer[data.id+'d'] = [];                    
             clloffer[data.id+'d'].push(data.data);
-               
+            //console.log(process.memoryUsage());
             if(data.init >= 1024 * data.fsize){
                var newPath = data.name.split('.').length>1?  __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
-               clloffer[data.id] = fs.createWriteStream(newPath);
-               clloffer[data.id].write(Buffer.concat(clloffer[data.id+'d']));
-               clloffer[data.id] = clloffer[data.id+'d'] = null;
+               clloffer[data.id] = fs.createWriteStream(newPath,{flags:'w'});
+               clloffer[data.id].write(Buffer.concat(clloffer[data.id+'d']));               
+               clloffer[data.id].end();              
+               clloffer[data.id] = undefined ;               
+               setTimeout(()=>{
+                  clloffer[data.id+'d'].length = 0;
+                  global.gc();                                                    
+               },1000)
                data.url = data.name.split('.').length>1? "/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: "/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
                if ((rooms.roomSecret.indexOf(data.auth) > -1) && (data.auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)]))
                   io.to(data.roomid).emit('newmsgfile', data);
@@ -367,7 +374,11 @@ io.on('connection', function(socket) {
       //by knowing callroom and running in console socket.emit('offeraccepted',{proper_condition});
       if(typeof clloffer[data]!='boolean'&&typeof clloffer[data+'d']!='boolean'){
          console.log('fcleaning unnecessary vars...');
-         clloffer[data] = clloffer[data+'d'] = null;         
+         if(clloffer[data])
+            clloffer[data].end();
+         clloffer[data.id+'d'].length = 0;
+         clloffer[data]= undefined;
+         global.gc();                   
       }
    })
    socket.on('disconnectmember', function(data) {
