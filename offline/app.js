@@ -376,7 +376,7 @@ io.on('connection', function(socket) {
          console.log('fcleaning unnecessary vars...');
          if(clloffer[data])
             clloffer[data].end();
-         clloffer[data.id+'d'].length = 0;
+         clloffer[data+'d'].length = 0;
          clloffer[data]= undefined;
          global.gc();                   
       }
