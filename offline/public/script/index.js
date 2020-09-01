@@ -749,15 +749,6 @@ socket.on("sendingspecial", function (e) {
     $(".info").click(function () {
         showCurrent(this);
     });
-/*let percent = {},
-    slice = {},
-    fsize = {},    
-    fread = {},
-    init = {},
-    type = {},
-    refertemp = {},
-    temp = {},
-    tempbuffer = {};*/
     let filequeue = [];
     window.currentlyUploading = false;
     function upload(e){
@@ -769,16 +760,16 @@ socket.on("sendingspecial", function (e) {
 async function handleUpload(e) {
         window.currentlyUploading = true;        
         bar = 30e3;
-        let i = generateid();
-        fsize = e.file.size / 1024,
-            $("#replytomsg").hide(),            
-            (type = e.file.type),
-            refer = e.refer,            
-            (fread = new FileReader()),
-            fread.fileName = e.file.name,            
-            (init = 0),
-            (temp = []),
-            (percent = 0),
+        fread = new FileReader();
+        $("#replytomsg").hide();
+        let i = generateid(),
+        fsize = e.file.size / 1024;                        
+            let type = e.file.type,
+            refer = e.refer,                                   
+            init = 0,
+            temp = [],
+            percent = 0;
+            fread.fileName = e.file.name;
             $("#whole").append(
                 $(
                     "<i class='fa fa-close' title='cancel uploading this file' id='" +
@@ -834,6 +825,7 @@ async function handleUpload(e) {
                                   .remove(),
                                   window.currentlyUploading = false,
                                   filequeue.shift(),
+                                  type = chunkslength = percent = refertemp = fread = temp = null,
                                   filequeue[0]&&handleUpload(filequeue[0]),
                               document.getElementById(i + "progress").remove()))
                           //(tempbuffer[i] = new Blob(temp[i])),
