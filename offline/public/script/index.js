@@ -753,8 +753,8 @@ socket.on("sendingspecial", function (e) {
     window.currentlyUploading = false;
     function upload(e){
         for(file of e.files)
-            filequeue.push({file:file,refer:{ text: $("#replytext").text(), target: $("#replytextparent").attr("class"), name: $("#replytexthead").text() }});
-        if(window.currentlyUploading==false)
+            file&&filequeue.push({file:file,refer:{ text: $("#replytext").text(), target: $("#replytextparent").attr("class"), name: $("#replytexthead").text() }});
+        if(window.currentlyUploading==false&&filequeue[0]&&filequeue[0].file)
             handleUpload(filequeue[0]);
     }
 async function handleUpload(e) {
@@ -786,10 +786,9 @@ async function handleUpload(e) {
         };
         s(init),
             fread.onabort = ()=>{
-                (filequeue.shift(),
-                window.currentlyUploading = false,
-                filequeue[0]&&handleUpload(filequeue[0]),
-                socket.emit('clearmemory',i))
+                (filequeue.shift(),                               
+                socket.emit('cleardata',{id:i,name:fread.fileName,user:userdata.nativeUser}),                                 
+                filequeue[0]?handleUpload(filequeue[0]):window.currentlyUploading = false)
             }
             fread.onload = function (e) {
                 /*if (init < e.target.result.byteLength) {
