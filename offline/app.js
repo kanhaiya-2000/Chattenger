@@ -354,8 +354,14 @@ io.on('connection', function(socket) {
 
          } 
       })
-   socket.on('clearmemory',function(data){
+   socket.on('cleardata',function(data){
+      var path_to_incomplete_file = data.name.split('.').length>1? __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
       global.gc();
+      console.log('clearing...');
+      fs.unlink(path_to_incomplete_file,function(err){
+         if(err)
+            console.log(err);
+      })
    })
    socket.on('disconnectmember', function(data) {
       if (typeof data === 'object') {
@@ -407,7 +413,7 @@ io.on('connection', function(socket) {
                fs.unlink(__dirname+'/public/storage/'+data.fileinfo,(err)=>{
                   console.log(err);
                   if(err)
-                  socket.emit('securitydanger','There was a problem in deleting your file')
+                  socket.emit('securitydanger','There was a problem in deleting your message')
                else
                   io.to(data.roomid).emit('deleting', {id: data.msgid,owner: data.user});
                });
