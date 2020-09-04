@@ -759,7 +759,7 @@ socket.on("sendingspecial", function (e) {
     }
 async function handleUpload(e) {
         window.currentlyUploading = true;        
-        bar = 30e3;
+        bar = 80e3;//make upload faster
         fread = new FileReader();
         $("#replytomsg").hide();
         let i = generateid(),
