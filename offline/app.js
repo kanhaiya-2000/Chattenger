@@ -36,7 +36,7 @@ app.get('/*',(req,res)=>{
 app.get('/', function(req, res) {   
    res.sendfile(__dirname + 'public/');   
 });
-
+var clloffer={};
 let users = {
    un: [],
    id: [],
@@ -89,8 +89,7 @@ function generateRoom() {
    for (var r = 0; r < 8; r++) room += charsall.substr(Math.floor(Math.random() * charsall.length), 1);
    return room;
 }
-io.on('connection', function(socket) {
-   let clloffer = {};
+io.on('connection', function(socket) {   
    socket.on('verifyingcurrent', function(data) {
       
    })
@@ -342,44 +341,21 @@ io.on('connection', function(socket) {
                   userNow: getUser(data.roomid)
                });
             }
-            io.to(data.roomid).emit('updateuser', getUser(data.roomid));
-            //i am using clloffer object here...because i dont want to define another object for the same
-            if(!clloffer[data.id+'d'])
-               clloffer[data.id+'d'] = [];                    
-            clloffer[data.id+'d'].push(data.data);
-            //console.log(process.memoryUsage());
-            if(data.init >= 1024 * data.fsize){
-               var newPath = data.name.split('.').length>1?  __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
-               clloffer[data.id] = fs.createWriteStream(newPath,{flags:'w'});
-               clloffer[data.id].write(Buffer.concat(clloffer[data.id+'d']));               
-               clloffer[data.id].end();              
-               clloffer[data.id] = undefined ;               
-               setTimeout(()=>{
-                  clloffer[data.id+'d'].length = 0;
-                  global.gc();                                                    
-               },1000)
+            io.to(data.roomid).emit('updateuser', getUser(data.roomid));            
+            var newPath = data.name.split('.').length>1?  __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: __dirname+"/public/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
+            fs.appendFile(newPath,data.data,function(e){if(e)console.log(e)});
+            if(data.init >= 1024 * data.fsize){             
                data.url = data.name.split('.').length>1? "/storage/"+data.user.split(' ').join('qw')+'_'+data.id+'.'+ data.name.split('.')[data.name.split('.').length-1]: "/storage/"+data.user.split(' ').join('qw')+'_'+data.id;
                if ((rooms.roomSecret.indexOf(data.auth) > -1) && (data.auth == rooms.roomSecret[rooms.roomsid.indexOf(data.roomid)]))
                   io.to(data.roomid).emit('newmsgfile', data);
             }
-         }else socket.emit('serverangry');
+         }
+         else socket.emit('serverangry');
 
          } 
       })
    socket.on('clearmemory',function(data){
-      //this is for clearing memory because file upload was aborted so these objects are no longer required
-
-      //this check is neccessary to ensure that noone should illegely change the value of calloffer for other clients..
-      //clloffer is required to authenticate that the person was actually invited to the video or voice calls otherwise it is possible that anyone can join a call
-      //by knowing callroom and running in console socket.emit('offeraccepted',{proper_condition});
-      if(typeof clloffer[data]!='boolean'&&typeof clloffer[data+'d']!='boolean'){
-         console.log('fcleaning unnecessary vars...');
-         if(clloffer[data])
-            clloffer[data].end();
-         clloffer[data+'d'].length = 0;
-         clloffer[data]= undefined;
-         global.gc();                   
-      }
+      global.gc();
    })
    socket.on('disconnectmember', function(data) {
       if (typeof data === 'object') {
