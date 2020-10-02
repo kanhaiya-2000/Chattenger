@@ -25,9 +25,12 @@ Chattenger is a node server based web application that enables you to establish 
 
     git clone https://github.com/kanhaiya-2000/Chattenger.git
     
-### navigate to the Chattenger repo and install necessary node modules(as mentioned in package.json file,you need npm preinstalled in your environment)
+### Get Latest code
+  <a href="https://drive.google.com/drive/folders/15I-CP71VxwtuHvhIEMqIf7qRw7F8Zl_f?usp=sharing">https://drive.google.com/drive/folders/15I-CP71VxwtuHvhIEMqIf7qRw7F8Zl_f?usp=sharing</a>
+    
+### navigate to the Chattenger directory and install necessary node modules(as mentioned in package.json file,you need npm preinstalled in your environment)
 
-    npm i express nodemailer compression nodemon password-hash socket.io
+    npm install
     
 ### final step
 
@@ -49,9 +52,9 @@ Chattenger is a node server based web application that enables you to establish 
 
 Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.
 
-## 2.High quality video and voice calls
+## 2.optimised quality video and voice calls
 
-The quality of video call actually depends on the camera resolution of your device and internet connection(As applicable for all applications),you can make multiple video or voice chat with your room members.Screensharing option is also available on supported desktop browsers(chrome,firefox,opera or Edge).
+The quality of video call actually depends on the camera resolution of your device and internet connection(As applicable for all applications),you can make multiple video or voice chat with your room members.Screensharing option is also available on supported desktop browsers(chrome,firefox,opera or Edge).The video call has been optimised earlier so that device should not warm up extensively while call is in progress.
 kindly check <a href="https://caniuse.com/#search=webrtc">here</a> for your browser support before attempting to make a call.Recent versions of safari are now supporting webrtc,however still safari has problem in webrtc implementations on some of the devices.So if you are using this application on iphone or ipad,it's not sure whether your device will support webrtc or not.
 
 ## 3.Administration
@@ -92,7 +95,7 @@ socket.io and webrtc are the most important things that made this project releva
 
 ### chat demo::
 
-<img src="demo/chat_demo.png" style="width:300px">
+<img src="demo/chat_view.png" style="width:300px">
 
 ### voice-chat demo::
 
