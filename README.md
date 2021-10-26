@@ -26,7 +26,12 @@ Chattenger is a node server based web application that enables you to establish 
     git clone https://github.com/kanhaiya-2000/Chattenger.git
     
 ### Get Latest code
-  <a href="https://drive.google.com/drive/folders/15I-CP71VxwtuHvhIEMqIf7qRw7F8Zl_f?usp=sharing">https://drive.google.com/drive/folders/15I-CP71VxwtuHvhIEMqIf7qRw7F8Zl_f?usp=sharing</a>
+
+> For offline folder
+ <a href="https://drive.google.com/drive/folders/1rn57QGHrvkxz5dfNv0eX1Q0PkG2gsaJ4?usp=sharing" target="blank">https://drive.google.com/drive/folders/1rn57QGHrvkxz5dfNv0eX1Q0PkG2gsaJ4?usp=sharing</a>
+ 
+> For main folder
+  <a href="https://drive.google.com/drive/folders/1yxLnezIGM8JRpSdqycmrFqdWUFZjvMVg?usp=sharing" target="blank">https://drive.google.com/drive/folders/1yxLnezIGM8JRpSdqycmrFqdWUFZjvMVg?usp=sharing</a>
     
 ### navigate to the Chattenger directory and install necessary node modules(as mentioned in package.json file,you need npm preinstalled in your environment)
 
