@@ -50,7 +50,7 @@ Chattenger is a node server based web application that enables you to establish 
 
 ## 1.Security
 
-Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.
+Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.Chats,file-sharing and calls are end-to-end encrypted and their data are never stored on server end.
 
 ## 2.optimised quality video and voice calls
 
