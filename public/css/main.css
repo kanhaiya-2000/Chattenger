@@ -1,0 +1,947 @@
+* {
+    outline: none;
+    border: none;
+    font-family: "chattenger";
+    font-size: 1em;
+    scrollbar-width: none;
+    font-weight:lighter;
+    box-sizing: content-box;
+    scrollbar-color:rgba(40, 44, 52,0.5) hsla(0,0%,100%,.1);
+}
+#dec{
+    text-shadow:5px 5px 5px black;
+    padding:5px;
+    border-radius:18px;
+    background:blue;
+}
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    border-radius: 50%;
+    padding: 1px;
+    margin: 3px;
+}
+::-webkit-input-placeholder,
+::-ms-input-placeholder,
+::placeholder{
+    text-shadow: 2px 2px 2px black;
+}
+.notice-marker {
+    border-radius: 50%;
+    width: max-content;    
+    background: #ff5400;
+    position: relative;
+    left: 10px;
+    top: -12px;
+    font-size:0.6em;
+    color:white;
+    padding:2px;
+    display:none;
+}
+#datasaver-badge {
+    position: fixed;
+    right: calc(50% - 10px);
+    top:calc(50% - 10px);
+    border-radius: 50%;
+    font-size: 0.8em;    
+    background: #49e810;
+    width: 20px;
+    height:20px;
+    cursor: pointer;
+    box-shadow:2px 2px 2px black;
+    z-index: 20;
+    display:none;
+}
+.flex-around{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+    padding:3px;
+}
+.flex-around div{
+    background: #08618c;
+}
+.flex-around input{
+    font-size:12px;
+}
+
+input {    
+    border-radius: 14px;
+    height: 2.1em;
+    margin: auto;
+    color:white;
+    background:#353131 !important;
+    border:1.3px solid grey;
+    width: 400px;
+}
+#login input{
+    border:1.3px solid grey !important;
+    padding:5px 10px;
+    border-radius: 34px;
+}
+input[type="file"] {
+    display: none;
+}
+body,
+html {
+    zoom: 100%; 
+    line-height:1.3;   
+}
+select:focus,
+option:hover,
+i:focus {
+    border: none;
+    outline: none;
+}
+
+.messagemain {
+    overflow: hidden;
+}
+.messagemain i {
+    font-size: 0.98em;
+}
+.messagemain video {
+    background:#f7f7ef;
+    outline: none;
+    transform: scale(1, 1);    
+    max-height: 400px;
+}
+#custom-div div {
+    padding: 6px 10px;
+}
+#adminsection{
+    width:300px !important;
+    box-shadow:5px 10px 10px black !important;
+    position:fixed !important;
+    right:calc(50% - 150px) !important;
+    top:calc(50% - 100px) !important;
+    border:2px solid gray;
+    text-shadow:3px 3px 3px black;
+}
+#adminsection span,#adminsection hr{
+    width:98% !important;
+}
+#adminsection button{
+    width:130px !important;
+    margin-top:4px !important;
+    display:inline-block;
+}
+@keyframes sz {
+    0% {
+        transform: scale(0.1) rotate(90deg);
+    }
+    10% {
+        transform: scale(0.18) rotate(120deg);
+    }
+    14% {
+        transform: scale(0.18) rotate(180deg);
+    }
+    18% {
+        transform: scale(0.18) rotate(240deg);
+    }
+    22% {
+        transform: scale(0.18) rotate(360deg);
+    }
+    25% {
+        transform: scale(0.25) rotate(65deg);
+    }
+    50% {
+        transform: scale(0.5) rotate(40deg);
+    }
+    70% {
+        transform: scale(0.7) rotate(20deg);
+    }
+    90% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+html {
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    background-image: url(/assets/smoothbg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+@keyframes s {
+    10% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    80% {
+        transform: scale(1.1);
+    }
+}
+#allgif span,
+#allstickers span {
+    background-image: url("/assets/spinner.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 130px;
+    max-width: 200px;
+    min-width: 150px;
+    width: 49.5%;
+}
+#emogi input {
+    background: #353131;
+}
+#allgif img,
+#allstickers img {
+    width: 100%;
+    height: 130px;
+    background: #f7f7ef;
+}
+#giveReport a:hover {
+    color: #f7f7ef;
+}
+@media (max-width: 700px) {
+    #controls,
+    #controls2 {
+        position: absolute;
+        top: 10px;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+}
+}
+#chatroom,
+#whole,
+#videocallingpage,
+#voicecallingpage {
+    animation : fn 0.4s;
+}
+::-webkit-scrollbar {
+    width:6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+    background:#2b2933;
+}
+#allgif,
+#allstickers,
+#allemogies,
+#emogi {
+    min-height: 200px;
+    scrollbar-width: thin;
+}
+#wallpaperoption span {
+    width: 37.5px;
+    height: 37.5px;
+    background-image: url("/assets/spinner.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+}
+.video-wrap{
+    border:1px solid blue;
+    margin:5px;
+}
+.video-wrap video{
+    object-fit: cover !important;
+}
+#showaudioconnection {
+    scrollbar-width: none;
+}
+#allemogies div {
+    font-size: 1.5em;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+#selectedfavicon {
+    background: green;
+    z-index: 3;
+}
+body,
+#message-container,
+#whole,
+#adminsection {
+    overflow: hidden;
+    scrollbar-width: thin;    
+}
+#adminsection {
+    align-items: center;
+    max-height: 200px;
+    overflow-y: auto;
+    color:#f7f7ef;
+    background: black;
+    scrollbar-width: none;
+    text-align: center;
+    width: 200px;
+    font-weight: bold;
+}
+#adminsection i {
+    color: red;
+    font-weight: bold;
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0.1;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#moreoptions {
+    animation: f 0.6s;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+#moreoptions span {
+    cursor: pointer;    
+    font-size: 1.1em;
+    margin: 0px;
+    padding: 5px;
+    transition: 0.5s;
+    width: 160px;
+}
+#moreoptions span:hover {
+    background: green;
+    color: black;
+}
+#whole {
+    background-color: #6c6c6c;
+    box-shadow: 8px 8px 5px grey;
+    background-image: url(/assets/bg3.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    scrollbar-width: none;
+    width: 47%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#adminsection span{       
+    white-space: nowrap;
+    cursor:pointer;
+    width: 98%;
+    display: block;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+button {
+    border-radius: 50%;
+    outline: none;
+    font-size: 1.5em;
+    width: 40px;
+    box-shadow:black 5px 5px 5px
+}
+#error-container {
+    background: rgba(43, 38, 38, 0.93);    
+    margin: auto;
+    overflow: hidden;
+    padding: 8px;
+    width: 330px;
+    border-radius: 20px;
+}
+#message {
+    border-radius: 18px;
+    font-size: 18px;
+    height: 100%;
+    margin: 0;
+    min-width: 70%;
+}
+.info {
+    border-radius: 8px;
+    clear: both;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    max-width: 200px;
+    padding: 5px;
+    word-wrap: break-word;
+    z-index: -1;
+    line-height:1.5;
+    font-family:chattenger;
+}
+#msg-sender {
+    background: transparent;
+    border-radius: 20px;
+    bottom: 2px;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 35px;
+    justify-content: space-between;
+    margin-bottom: 0;
+    position: sticky;
+    width: 100%;
+}
+#msg-sender i,
+#sendbtn {
+    align-self: center;
+    background: #2b2933;
+    border-radius: 50%;
+    font-size: 2.1em;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 6px;
+}
+#sendbtn {
+    padding: 0px;
+}
+.messages:last-child {
+    animation: f 0.5s;
+}
+.messages {
+    font-size: 1em;
+    margin-top: 4px;
+    box-shadow: 2px 4px 5px #000;
+}
+a {
+    background: black;
+    color: red;
+}
+a:hover {
+    background: white;
+    color: green;
+}
+#head {
+    background: rgb(78, 78, 78);
+    display: flex;
+    flex-direction: row-reverse;
+    height: 30px;
+    margin-bottom: 4px;
+    padding: 6px;
+    top:0px;
+    position: sticky;
+    width: 100%;
+    box-shadow: 2px 2px 3px black;
+    z-index: 300;
+}
+#head i {
+    cursor: pointer;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 5px;
+    margin-bottom: 0;
+    margin-top: 0;
+    transition: 0.9s;
+}
+i {
+    cursor: pointer;
+}
+#replytomsg {
+    max-width: 600px;
+    bottom: 37px;
+}
+#webcam {
+    top: 50px;
+    max-width: 500px;
+    z-index: 5000;
+    position: fixed;
+}
+#stylingtools,
+#Adv_toggler_menu {
+    max-height: 155px;
+    overflow: auto;
+}
+#head i :hover {
+    background: grey;
+}
+@keyframes sp {
+    10% {
+        background-image: radial-gradient(white 3%, green 80%, black);
+    }
+    30% {
+        background-image: radial-gradient(black 3%, white 30%, red 50%, green);
+    }
+    70% {
+        background-image: radial-gradient(red 3%, green 10%, yellow 10%, black 17%, red 30%, black);
+    }
+}
+@keyframes f {
+    0% {
+        border-radius: 50%;
+        opacity: 0.2;
+        overflow: hidden;
+        transform: scale(0.1, 0.1);
+    }
+    90% {
+        border-radius: 10%;
+        opacity: 0.9;
+        overflow: hidden;
+        transform: scale(1, 1);
+    }
+}
+@keyframes fn {
+    0% {        
+        opacity: 0.2;
+        overflow: hidden;
+        transform: scale(0.1, 0.1);
+    }
+    90% {        
+        opacity: 0.9;
+        overflow: hidden;
+        transform: scale(1, 1);
+    }
+}
+#emogi {
+    background: #20252d;
+    display: none;
+    height: 300px;
+    max-height: 300px;
+    max-width: 400px;
+    scrollbar-width: thin;
+    z-index: 300;
+}
+#emogi div {
+    cursor: pointer;
+}
+@keyframes op {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#message-container {
+    margin: auto;    
+    overflow: -moz-scrollbars-none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 2px 5px;
+    padding-left: 10px;   
+    position: sticky;
+    width: 97%;
+    scrollbar-width:auto;
+}
+
+#emogi div i {
+    color: #14e314;
+    font-weight: bold;
+    padding-top:4px;
+}
+select {
+    cursor: pointer;
+    width: 13px;
+    height: 10px !important;
+    padding: 4px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(../sel.png) 50% 38%;
+}
+#srch {
+    height: 25px;
+    max-width: 150px;
+    margin-right: 0;
+    margin-top: -2px;
+    transition: width 0.4s ease-in-out;
+    z-index: 400;
+}
+#srch:focus {
+    max-width: 208px;
+}
+option {
+    background: white;
+    font-size: 1em;
+    margin: 1px;
+    padding: 5px;
+    width: 100px;
+    z-index: 20;
+}
+#videocallingpage,
+#voicecallingpage {
+    background-color: #221c1c;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    height: 100vh;
+    width: 100vw;
+}
+#videocontainer {
+    bottom: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100px;
+    justify-content: flex-end;
+    position: fixed;
+    overflow-x: auto;
+    width: 100%;
+    z-index: 4;
+    scrollbar-width: none;
+}
+#videocontainer video {
+    height: 100px;   
+    
+}
+#videocallingpage video{
+    transition: transform 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.large {
+    top: 0;
+    display: flex;    
+    height: calc(100% + 2px);
+    width: calc(100% + 2px);
+    position: fixed;   
+}
+.gif-container,
+.image-container {
+    background-size: 100% 300px;
+    width: 100%;
+    height: 300px;
+    background-position: center;
+}
+.image-container {
+    background-size: cover;
+}
+#login {
+    max-width: 400px;
+    padding-top: 30px;
+}
+#login1 {
+    animation: f 1.3s;
+    display: block;
+}
+#message {
+    bottom: 10px;
+    position: sticky;
+    width: 85%;
+}
+#login2 {
+    animation: f 1.3s;
+    display: none;
+}
+#chatroom {
+    height: 100%;
+    width: 100vw;
+}
+nav a {
+    background: black;
+    border: none;
+    cursor: pointer;
+    font-size: 0.7em;
+    padding: 5px 10px;
+    text-decoration: none;
+    width: 40%;
+    word-wrap: break-word;
+}
+nav a:active {
+    background: blue;
+    border: none;
+    color: red;
+}
+nav a:hover {
+    background: green;
+    color: black;
+}
+#selfview{
+    transform:scale(-1,1) translate(0);
+}
+#controls,
+#controls2 {
+    border-radius: 20px;
+    height: 40px;
+    scrollbar-width: thin;
+    padding-top: 8px;
+}
+#adminsection {
+    position: sticky;
+    right: 20px;
+    top: 0px;
+    padding-top:10px;
+    width: 160px;
+}
+#stylingtools i {
+    border-radius: 30%;
+}
+#wallpaperoption img {
+    border-radius: 50%;
+    cursor: pointer;
+    height: 37.5px;
+    width: 37.5px;
+    display: none;
+}
+#userlist {
+    background:#5e4e4e;
+    max-height: 200px;
+    overflow-x: hidden;
+    width: 130px;
+    z-index: 200;
+}
+#userlist span {
+    background: green;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+.activefilter {
+    background: green;
+    animation: f 1s infinite alternate;
+    padding:5px;
+}
+#userlist span:hover {
+    background: red;
+    color: yellow;
+}
+@media (max-width: 700px) {
+    #toggler{
+        display:none;
+    }
+    #head {
+        padding-left: 5px;
+        padding-right: 10px;
+        position: fixed;
+        width: 98%;
+    }
+    #head i {
+        font-size: 1.5em;
+    }
+    #moreoptions span {
+        padding-left: 5px;
+        width: 160px;
+    }
+    input {        
+        border-radius: 14px;
+        height: 32px;
+        margin: auto;
+        width: 85%;
+    }
+    html {
+        overflow-y: scroll;
+    }    
+    #msg-sender {
+        bottom: 2px;
+        display: flex;
+        flex-wrap: nowrap;
+        height: 40px;
+        margin-block-end: 1px;
+        margin-bottom: 0;
+        position: fixed;
+        width: 100%;
+    }
+    #message {
+        border-radius: 18px;
+        bottom: 0px;
+        height: 100%;
+        min-width: 30%;
+    }
+    #videoconatainer {
+        height: 60px;
+    }
+    .large {
+        bottom: 0;
+        min-height: 100%;
+        min-width: 100%;
+        position: fixed;
+        right: 0;
+    }
+    #msg-sender i {
+        color: red;
+        font-size: 1.9em;
+    }
+    #message-container {
+        overflow-y: auto;
+        position: absolute;
+        top: 44px;
+        width: calc(100vw - 20px);
+    }
+    .messagemain {
+        font-size: 1em;
+    }
+    #chatroom,
+    #voicecallingpage,
+    #videocallingpage {
+        bottom: 0;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        width: 100vw;
+    }
+    
+    #whole {
+        background-size: 100% 100%;
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
+    }
+    #whole {
+        width: 100vw;
+    }
+    #replytomsg {
+        width: calc(100% - 10px) !important;
+        left:3px !important;
+        bottom: 42px !important;
+    }
+}
+hr {
+    border: 1px solid red;
+    padding: 0px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+@media(max-width:1250px) and (min-width:700px){
+    #whole{
+        width:650px;
+    }
+}
+@media(max-width:320px){
+    body{
+        font-size:90% !important;
+    }
+    #adminsection{
+        width:98% !important;      
+        right:1% !important;
+        top:10% !important;        
+    }    
+    #login{
+        zoom:90% !important;
+        font-size:90% !important;
+    }
+    #msg-sender{
+        height: 30px !important;
+        font-size:70% !important;
+        bottom:2px !important;
+    }
+    #Adv_toggler_menu select{
+        width:30px !important;
+    }
+    #photoedit{
+        display:none !important;
+    }
+    
+    #head{
+        height:20px !important;
+        font-size:70% !important;
+    }
+    #userimg{
+        height:30px !important;
+        width:30px !important;
+    }
+    #recordado{
+        padding-top:40px !important;
+    }
+    #fav select{
+        width: 30px !important;
+    }
+    #emogi{
+        font-size:70% !important;
+        max-height:200px !important;
+    }
+    #allgif span,#allstickers span{
+        width:100% !important;
+        max-width:100% !important;
+        min-width:100% !important;
+    }
+    #message{
+        font-size:12px !important;
+        height:90% !important;
+    }
+    #error-container{
+        width:95% !important;
+    }
+    #rendering{
+        width:95% !important;
+        font-size:0.7em !important;
+        top:10% !important;
+        left: 2.5% !important;
+
+    }
+    .info{
+        width:70% !important;
+    }
+    #stylingtools,#Adv_toggler_menu{
+        width:95% !important;
+        left:2.5% !important;
+        font-size: 81% !important;
+    }
+    #stylingtools p{
+        padding-left: 20px !important;
+    }
+    #allgif input,#allstickers input{
+        top:25px !important;
+    }
+    .messages{
+        min-width: 50% !important;
+        max-width:90% !important;
+        font-size:90% !important;
+    }
+    #emogi input{
+        top:0px !important;
+        height:24px !important;
+    }
+    #controls2,#controls{
+        font-size:70% !important;
+    }
+    #allstickers,#allgif,#allgif div{
+        width:100% !important;
+
+    }
+    #srch{
+        height:20px;       
+    }
+    .avatar{
+        width:30px;
+        height:30px;
+    }
+    #message-container{
+        height: calc(100% - 75px) !important;
+        font-size:90% !important;
+        top:34px !important;
+    }
+    #allstickers > div,#allgif > div{
+        top:0px !important;
+    }
+    .messages select{
+        width: 6px !important;
+        height:4px !important;
+    }
+    #replytomsg{
+        font-size:80% !important;
+    }
+    .messages b {
+        font-size:12px !important;
+    }
+    #replytomsg{
+        bottom:32px !important;
+    }
+    #moreoptions{
+        width:50px !important;
+    }
+}
+@media(max-width:300px){
+    #srch{
+        visibility:hidden;
+    }
+}

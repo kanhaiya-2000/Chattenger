@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>
+    <title>You are Offline</title>
+    <meta name="viewport" id="content" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <link id="favicon" type="image/webp" rel="icon" href="/assets/chattenger_icon.webp" sizes="32x32">
+    <style>
+        @keyframes sz {
+            0% {
+                transform: scale(0.1) rotate(90deg);
+            }
+
+            10% {
+                transform: scale(0.18) rotate(120deg);
+            }
+
+            14% {
+                transform: scale(0.18) rotate(180deg);
+            }
+
+            18% {
+                transform: scale(0.18) rotate(240deg);
+            }
+
+            22% {
+                transform: scale(0.18) rotate(360deg);
+            }
+
+            25% {
+                transform: scale(0.25) rotate(65deg);
+            }
+
+            50% {
+                transform: scale(0.5) rotate(40deg);
+            }
+
+            70% {
+                transform: scale(0.7) rotate(20deg);
+            }
+
+            90% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .content {
+            width: 600px;
+            height: 100%;
+            align-self: center;
+            flex-grow: 1;
+            background: url('/assets/offline.gif') no-repeat center center;
+            background-size: 140% auto;
+            /*
+                background-position: center center; */
+        }
+
+        button {
+            outline: none;
+            border: 0;
+            font-size: 1.1em;
+            box-shadow: 4px 4px 5px black;
+        }
+
+        #lb:hover {
+            background: yellow !important;
+        }
+
+        .try-again {
+            bottom: 6%;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            box-shadow: 4px 4px 5px black;
+            left: calc(50% - 42px);
+            position: fixed;
+            cursor: pointer;
+            background: grey;
+            transition: 0.5s;
+        }
+
+        .try-again:hover {
+            background: purple;
+        }
+
+        .container-embed {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+        }
+
+        @media (max-width:600px) {
+            .content {
+                width: 100%;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <center class="try-again" onclick="reload()">Retry</center>
+    <center class="container-embed">
+        <div class="content">
+        </div>
+    </center>
+<script>
+    let tryagain = document.getElementsByClassName('try-again')[0]; 
+    function reload() {
+        if (navigator.onLine) {
+            tryagain.style.display="none";
+            window.location.assign('/')
+        }
+        else {
+            document.getElementById("rendering") && document.getElementById("rendering").remove(),
+                document.body.innerHTML += '<div id="rendering" style="animation:sz 1.2s linear;\
+                    position:fixed;padding-top:10px;top:150px;font-size:0.8em;none;\
+                    border-radius:15px;z-index:1000000;width:300px;left:calc(50% - 150px);\
+                    background:#6a6161;"><div style="overflow-y:auto;overflow-x:hidden;\
+                    font-weight:bold;padding:10px;max-height:150px;\
+                    background:grey;color:white;text-align:center">To launch the app,please connect to internet</div>\
+                    <div style="display:flex;height:30px;padding-top:10px;\
+                    padding-bottom:10px;justify-content:space-around">\
+                    <button id="lb" style="background:green;cursor:pointer;transition:0.3s;border-radius:8px;font-weight:bold;width:80px" onclick="this.parentElement.parentElement.remove()">Ok</button>\
+                    </div></div>';
+        }
+    }
+    reload();
+</script>
+</body>
+</html>
