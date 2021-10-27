@@ -14,15 +14,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
-    "https": "^1.0.0",
-    "mongodb": "^3.5.8",
-    "mysql": "^2.18.1",
+    "https": "^1.0.0",    
     "nodemailer": "^6.6.1",
     "nodemon": "^2.0.3",
-    "password-hash": "^1.2.2",
-    "public-ip": "^4.0.2",
-    "socket.io": "^2.4.1",
-    "zlib": "^1.0.5"
+    "password-hash": "^1.2.2",    
+    "socket.io": "^2.4.1"    
   },
   "devDependencies": {}
 }
