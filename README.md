@@ -1,7 +1,7 @@
 # chattenger
 <img src="https://kkleap.github.io/assets/chattenger_icon.webp">
 
-Chattenger is a node server based web application that enables you to establish real-time communication with your friends across the globe.
+Chattenger is a node server based web application that enables you to establish real-time communication with your friends across the globe(ofcourse,where internet is available !).
 
 > Techniques and languages that were used
 
@@ -56,7 +56,7 @@ Chattenger is a node server based web application that enables you to establish 
 
 ## 1.Security and Encryption
 
-Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.Chats,file-sharing and calls are end-to-end encrypted and their data are never stored on server end.
+Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.Chats,file-sharing and calls are end-to-end encrypted and their data are never stored on server end.Random encryption key and auth token are generated on creation of a room.Token is then shared with each member who joins the room to give them access to send and receive message in the room.
 
 ## 2.optimised quality group video and voice calls
 
@@ -83,17 +83,20 @@ You can send voice messages.
 
 Image filter has also been added,you can apply or control filter properties like brightness,contrast,hue,saturation,opacity,blur,invert etc.You can also crop image before sharing.
 
-There are much more things one can explore while using that i am not mentioning here.
+## 8.Private messaging
+
+Private message can be sent to a user in room by including `@{USERNAME}` in message.
+
 
 ## Update
 
-Now profile pic can be added and will remain saved to your browser even if you refresh your browser.You have options to change fonts,text-color and text-size(font-size) as per your convenience.These all styles and fonts will also remain saved untill you update it.
+Now profile pic can be added and will remain saved to your browser even if you refresh your browser.You have options to change fonts,text-color and text-size(font-size) as per your convenience.These all styles and fonts will also remain saved (provided browser supports web storage).Few games were also added.Some other features include deleting sent messages,replying to a message etc.
 
 
 > Credits
 
 
-socket.io and webrtc are the most important things that made this project relevantly saucy.My heartful thanks to #webrtc and #socket.io developers for building such cools technology.
+socket.io and webrtc are the most important things that made this project relevantly saucy.My heartful thanks to #webrtc and #socket.io developers for building such cool technology.
 
 
 > Demo/pics
@@ -101,7 +104,7 @@ socket.io and webrtc are the most important things that made this project releva
 
 ### chat demo::
 
-<img src="https://kanhaiyakumar.netlify.app/assets/img/png/chattenger.png" style="width:300px">
+<img src="https://kanhaiyakumar.netlify.app/assets/img/png/chattenger.png" style="width:100%">
 
 To explore yourself, <a href='https://chattenger.herokuapp.com' target='_blank'>Click</a> here.
-### PS: Don't forget to give your feedback if you are going to use it.
+
