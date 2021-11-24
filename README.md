@@ -13,6 +13,7 @@ Chattenger is a node server based web application that enables you to establish 
 - Socket.io
 - Nodejs
 - Webrtc
+- Web crypto
 - FileReader API
 - Canvas filtering and image manipulation
 - External API(like Giphy api,tenor api,deezer api,imgur api)
@@ -53,18 +54,18 @@ Chattenger is a node server based web application that enables you to establish 
 > Features
 
 
-## 1.Security
+## 1.Security and Encryption
 
 Security of password for your room matters,Password and admin key for a room is now securely stored after hasing with passwordHASH.Chats,file-sharing and calls are end-to-end encrypted and their data are never stored on server end.
 
-## 2.optimised quality video and voice calls
+## 2.optimised quality group video and voice calls
 
-The quality of video call actually depends on the camera resolution of your device and internet connection(As applicable for all applications),you can make multiple video or voice chat with your room members.Screensharing option is also available on supported desktop browsers(chrome,firefox,opera or Edge).The video call has been optimised earlier so that device should not warm up extensively while call is in progress.
-kindly check <a href="https://caniuse.com/#search=webrtc">here</a> for your browser support before attempting to make a call.Recent versions of safari are now supporting webrtc,however still safari has problem in webrtc implementations on some of the devices.So if you are using this application on iphone or ipad,it's not sure whether your device will support webrtc or not.
+The quality of video call actually depends on the camera resolution of your device and internet connection(As applicable for all applications),you can make group video or voice calls with your room members.Screensharing option is also available on supported desktop browsers(chrome,firefox,opera or Edge).The video call has been optimised by restricting framerate and bandwidth(when bandwidth saver is turned on) so that device should not warm up extensively while call is in progress.
+kindly check <a href="https://caniuse.com/#search=webrtc">here</a> for your browser support before attempting to make a call.Recent versions of safari are now supporting webrtc. Call may not work if non-proxied UDP connection is blocked in browser setting.
 
 ## 3.Administration
 
-A person who creates a group first is denoted as admin of that group,his/her login information is protected by the adminkey(that he/she provides during group creation),so ideally noone can login as admin unless he/she knows the admin key for that group.Besides,being an admin gives you access to change password for your group and remove any member in your group.
+A person who creates a group first is denoted as admin of that group,his/her login information is protected by the adminkey(that he/she provides during group creation),so ideally noone can login as admin unless he/she knows the admin key for that group.Besides,being an admin gives you access to change password for your group,change max number of users in room and remove any member in your group.
 
 ## 4.GIF,emogi ,stickers, music and wallpaper
 
@@ -72,7 +73,7 @@ These are just added to give wonderful experience to chatting.You can delete you
 
 ## 5.File sharing and location sharing
 
-File sharing is based on blob and filereader API.You can practically share a file of max-limit 100MB from a laptop(with 8GB ram).Since there is no intermediate data center involved in sharing file,therefore you need to have good internet connection for making successful sharing of larger file(since it is direct data transfer between client browsers through the server so some data may lost if you disconnect your net (or get disconnected because of poor connection) and consequently either file will not be received or will be received as incomplete(corrupt) file
+File sharing is based on blob and filereader API.Buffer are encrypted before sending it to other users in a room.Since there is no intermediate data center involved in sharing file,therefore you need to have good internet connection for making successful sharing of file(since it is direct data transfer among client browsers through the server so some data may get lost if you disconnect your internet (or get disconnected because of poor connection) and consequently file may get corrupted
 
 ## 6.Voice messaging
 
@@ -100,11 +101,7 @@ socket.io and webrtc are the most important things that made this project releva
 
 ### chat demo::
 
-<img src="demo/chat_view.png" style="width:300px">
+<img src="https://kanhaiyakumar.netlify.app/assets/img/png/chattenger.png" style="width:300px">
 
-### voice-chat demo::
-
-<img src="demo/voice_demo.png" style="width:300px">
-
-To explore in reality,see description above and create a group to enjoy what i mean or <a href='https://chattenger.herokuapp.com'>Click</a> here.
+To explore yourself, <a href='https://chattenger.herokuapp.com' target='_blank'>Click</a> here.
 ### PS: Don't forget to give your feedback if you are going to use it.
