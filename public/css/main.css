@@ -71,12 +71,11 @@ input {
     height: 2.1em;
     margin: auto;
     color:white;
-    background:#353131 !important;
-    border:1.3px solid grey;
+    background:#353131;    
     width: 400px;
 }
 #login input{
-    border:1.3px solid grey !important;
+    border:1.3px solid #3c3939ab !important;
     padding:5px 10px;
     border-radius: 34px;
 }
@@ -97,6 +96,7 @@ i:focus {
 
 .messagemain {
     overflow: hidden;
+    user-select:text;
 }
 .messagemain i {
     font-size: 0.98em;
@@ -116,7 +116,7 @@ i:focus {
     position:fixed !important;
     right:calc(50% - 150px) !important;
     top:calc(50% - 100px) !important;
-    border:2px solid gray;
+    border:2px solid #3c3939ab;
     text-shadow:3px 3px 3px black;
 }
 #adminsection span,#adminsection hr{
@@ -212,7 +212,7 @@ html {
 }
 #chatroom,
 #whole,
-#videocallingpage,
+#videocallingpage,#gameroom,
 #voicecallingpage {
     animation : fn 0.4s;
 }
@@ -249,9 +249,11 @@ html {
 .video-wrap{
     border:1px solid blue;
     margin:5px;
+    border-radius: 20px;
 }
 .video-wrap video{
     object-fit: cover !important;
+    border-radius: 20px !important;
 }
 #showaudioconnection {
     scrollbar-width: none;
@@ -320,7 +322,7 @@ body,
     margin: 0px;
     padding: 5px;
     transition: 0.5s;
-    width: 160px;
+    width: 170px;
 }
 #moreoptions span:hover {
     background: green;
@@ -371,8 +373,10 @@ button {
 }
 #message {
     border-radius: 18px;
+    padding-left:10px;
     font-size: 18px;
     height: 100%;
+    z-index:20;
     margin: 0;
     min-width: 70%;
 }
@@ -458,7 +462,9 @@ i {
 }
 #replytomsg {
     max-width: 600px;
-    bottom: 37px;
+    bottom: 0px;
+    padding:5px 5px 46px !important;
+    padding-right:13px !important;
 }
 #webcam {
     top: 50px;
@@ -536,8 +542,7 @@ i {
     overflow: -moz-scrollbars-none;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 2px 5px;
-    padding-left: 10px;   
+    padding: 2px 10px;      
     position: sticky;
     width: 97%;
     scrollbar-width:auto;
@@ -565,6 +570,7 @@ select {
     margin-right: 0;
     margin-top: -2px;
     transition: width 0.4s ease-in-out;
+    border:1px solid #aaa3;
     z-index: 400;
 }
 #srch:focus {
@@ -578,7 +584,7 @@ option {
     width: 100px;
     z-index: 20;
 }
-#videocallingpage,
+#videocallingpage,#gameroom,
 #voicecallingpage {
     background-color: #221c1c;
     background-repeat: no-repeat;
@@ -605,6 +611,62 @@ option {
 }
 #videocallingpage video{
     transition: transform 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+#gameroom{
+    z-index:1000;
+    position:fixed;
+    top:0;
+    height:100%;
+    width:100%;
+    overflow-y: scroll;
+}
+#gamearea,#gamearea iframe{
+    width:100%;
+    height:100%;
+}
+
+.card_image {
+	width: 300px;
+	height: 300px;
+    background-size: contain;
+}
+kbd {
+	color: black;
+	background: #0aa405;
+	padding: 3px;
+	margin: 2px;
+    white-space: nowrap;
+}
+#allcards {
+	display: flex;
+	justify-content: space-around;
+    margin-top:100px;
+    flex-wrap:wrap;
+    width:100%;
+}
+.game_card {
+	padding: 10px;
+	border-radius: 20px;
+    height:340px;
+	background: black;
+	color: white;
+	box-shadow: 4px 4px 65px #3e2d2d;
+    cursor: pointer;
+    margin-top:30px;
+}
+#gobackbtn {
+	width: 100px;
+	position: fixed;
+	top: 20px;
+    right:20px;
+	padding: 10px;
+	background: red;
+	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: 1px 4px 7px #463a3a;
+}
+.game_detail {
+	padding: 10px;
 }
 .large {
     top: 0;
@@ -782,7 +844,7 @@ nav a:hover {
     }
     #chatroom,
     #voicecallingpage,
-    #videocallingpage {
+    #videocallingpage,#gameroom {
         bottom: 0;
         height: 100%;
         position: absolute;
@@ -802,7 +864,7 @@ nav a:hover {
     #replytomsg {
         width: calc(100% - 10px) !important;
         left:3px !important;
-        bottom: 42px !important;
+        bottom: 0px !important;
     }
 }
 hr {
@@ -934,7 +996,7 @@ hr {
         font-size:12px !important;
     }
     #replytomsg{
-        bottom:32px !important;
+        bottom:0px !important;
     }
     #moreoptions{
         width:50px !important;
@@ -944,4 +1006,40 @@ hr {
     #srch{
         visibility:hidden;
     }
+}
+#profileModalParent {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 500;
+}
+
+#profileModal {
+	max-width: 300px;
+	max-height: 400px;
+	object-fit: cover;
+    margin-top: 70px;
+}
+#cancel-icon {
+	width: 28px !important;
+	height: 28px !important;
+	top:48px;
+	right: calc(50% - 24px);
+	z-index: 5;
+	position: fixed;
+	cursor: pointer;
+	padding: 12px;
+	border-radius: 100%;
+	background: rgba(0, 0, 0, 0.3) none repeat scroll 0% 0%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#cancel-icon svg{
+    fill: white;
 }

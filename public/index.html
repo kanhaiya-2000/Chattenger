@@ -1,893 +1,964 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Chattenger</title>
-        <meta name="viewport" id="content" content="width=device-width,initial-scale=1.0,user-scalable=no" />
-        <meta
-            name="description"
-            content="Chattenger is a chatting web application with most of the features embedded that includes video call,voice call,voice messaging,photo editing etc.Use it to chat with your friends across the globe.Chrome is the recommended browser for running it on android mobile devices."
-        />
-        <meta property="og:image" content="https://kkleap.github.io/assets/chattenger_icon.webp" />
-        <meta property="og:type" content="Chatting app" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:site_name" content="Chattenger" />
-        <meta property="og:image:height" content="1200" />
-        <meta property="og:url" content="https://chattenger.herokuapp.com/" />
-        <meta property="og:title" content="Chattenger:web app" />
-        <meta
-            name="og:description"
-            content="Chattenger is a chatting web application with most of the features embedded that includes video call,voice call,voice messaging,photo editing etc.Use it to chat with your friends across the globe.Chrome is the recommended browser for running it on mobile devices.Add chattenger to home screen to get more richer experience."
-        />
-        <meta name="keywords" content="chattenger,online-chat,nodejs chatting,webrtc-demo,socketio-demo" />
-        <meta name="X-UA-compatible" content="IE=edge" />
-        <link rel="manifest" href="manifest.json" />
-        <meta name="theme-color" content="#272b33" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-72x72.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-96x96.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-128x128.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-144x144.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-384x384.png" />
-        <link rel="apple-touch-icon" href="assets/icons/icon-512x512.png" />
-        <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
-        <base href="." />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet" />
-        <meta charset="utf-8" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-            crossorigin="anonymous"
-        />
-        <link href="css/main_font.css" rel="stylesheet" type="text/css" />
-        <link href="css/f_o1.css" rel="stylesheet" />
-        <link id="favicon" type="image/webp" rel="icon" href="/assets/chattenger_icon.webp" sizes="32x32" />
-        <script type="text/javascript" src="/script/jquery.js"></script>
-        <script type="text/javascript" src="/script/crypto.js"></script>
-        <link rel="stylesheet" href="css/main.css?v=1.1" />
-        <style>
-            #msg-sender {
-                bottom: 5px;
-            }
-            audio::-webkit-media-controls-panel {
-                background-color: gray;
-            }
-            .messagemain audio {
-                width: 100%;
-                overflow: hidden;
-            }            
-            .messagemain img {
-                max-height: 350px;
-                min-width: 100%;
-                object-fit: cover;
-            }
-            .messagemain video{
-                max-height:400px;
-                max-width:100%;
-                object-fit: contain;
-            }
 
-            .messagemain {
-                overflow: hidden;
-                letter-spacing: 0.1px;
-                padding: 1px 4px;
-            }
-        </style>
-    </head>
+<head>
+    <title>Chattenger</title>
+    <meta name="viewport" id="content" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="description"
+        content="Chattenger is a chatting web application with most of the features embedded that includes video call,voice call,voice messaging,photo editing etc.Use it to chat with your friends across the globe.Chrome is the recommended browser for running it on android mobile devices." />
+    <meta property="og:image" content="https://kkleap.github.io/assets/chattenger_icon.webp" />
+    <meta property="og:type" content="Chatting app" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:site_name" content="Chattenger" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:url" content="https://chattenger.herokuapp.com/" />
+    <meta property="og:title" content="Chattenger:web app" />
+    <meta name="og:description"
+        content="Chattenger is a chatting web application with most of the features embedded that includes video call,voice call,voice messaging,photo editing etc.Use it to chat with your friends across the globe.Chrome is the recommended browser for running it on mobile devices.Add chattenger to home screen to get more richer experience." />
+    <meta name="keywords" content="chattenger,online-chat,nodejs chatting,webrtc-demo,socketio-demo" />
+    <meta name="X-UA-compatible" content="IE=edge" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#272b33" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-512x512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <base href="." />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+    <link href="css/main_font.css" rel="stylesheet" type="text/css" />
+    <link href="css/f_o1.css" rel="stylesheet" />
+    <link id="favicon" rel="icon" href="/assets/chattenger_icon.ico" sizes="32x32" />
+    <script type="text/javascript" src="/script/jquery.js"></script>
+    <script type="text/javascript" src="/script/crypto.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQJWMJF2K0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-VQJWMJF2K0');
+    </script>
+    <link rel="stylesheet" href="css/main.css?v=1.1" />
+    <style>
+        #msg-sender {
+            bottom: 5px;
+            z-index:20;
+        }
 
-    <body onbeforeunload="return 'sure to leave?'" style="opacity: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.65) fixed; background-attachment: fixed;">
-        <center style="height: 100%;">
-            <img src="/assets/spinner.gif" alt="Loading..." width="1" height="1" id="spinnerbg" style="display: none;" crossorigin="anonymous" /><canvas id="expcanvas" style="display: none;"></canvas>
-            <img src="/assets/spinner2.gif" alt="Loading..." width="1" height="1" id="spinnerbg2" style="display: none;" /><audio id="scbeep" src="/assets/beap.mp3" style="display: none;"></audio>
-            <audio id="reconnecting" style="display: none;"></audio><audio preload="none" id="ringaud" src="/assets/ring.mp3" style="display: none;"></audio><audio id="sctyping" src="/assets/typing.mp3" style="display: none;"></audio>
-            <div id="login">
-                <div style="padding: 12px; display: -webkit-flex; display: flex; justify-content: space-between;">
-                    <div>
-                        <span
-                            style="font-size: 2em; color: #ff0b72; border-bottom: 10px solid #165606; cursor: pointer;"
-                            id="signin"
-                            onclick="$('#signup').css('border-bottom','0px');$(this).css('border-bottom','10px solid #165606');$('#login1').show();$('#login2').hide();$('#error-container').hide();"
-                        >
-                            Join
-                        </span>
-                    </div>
-                    <div>
-                        <span
-                            style="font-size: 2em; color: #ff0b72; cursor: pointer;"
-                            id="signup"
-                            onclick="$('#signin').css('border-bottom','0px');$(this).css('border-bottom','10px solid #165606');$('#login2').show();$('#error-container').hide();$('#login1').hide();"
-                        >
-                            Create
-                        </span>
-                    </div>
+        audio::-webkit-media-controls-panel {
+            background-color: gray;
+        }
+
+        .messagemain audio {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .messagemain img {
+            max-height: 350px;
+            min-width: 100%;
+            object-fit: cover;
+        }
+
+        .messagemain video {
+            max-height: 400px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .messagemain {
+            overflow: hidden;
+            letter-spacing: 0.1px;
+            padding: 1px 4px;
+        }
+    </style>
+    <script>
+        const DEFAULT_FONT = "'Nunito', sans-serif";
+    </script>
+</head>
+
+<body onbeforeunload="return 'sure to leave?'"
+    style="opacity: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, 0.65) fixed; background-attachment: fixed;">
+    <center style="height: 100%;">
+        <img src="/assets/spinner.gif" alt="Loading..." width="1" height="1" id="spinnerbg" style="display: none;"
+            crossorigin="anonymous" /><canvas id="expcanvas" style="display: none;"></canvas>
+        <img src="/assets/spinner2.gif" alt="Loading..." width="1" height="1" id="spinnerbg2"
+            style="display: none;" /><audio id="scbeep" src="/assets/beap.mp3" style="display: none;"></audio>
+        <audio id="reconnecting" style="display: none;"></audio><audio preload="none" id="ringaud"
+            src="/assets/ring.mp3" style="display: none;"></audio><audio id="sctyping" src="/assets/typing.mp3"
+            style="display: none;"></audio>
+        <div id="login">
+            <div style="padding: 12px; display: -webkit-flex; display: flex; justify-content: space-between;">
+                <div>
+                    <span style="font-size: 2em; color: #ff0b72; border-bottom: 10px solid #165606; cursor: pointer;"
+                        id="signin"
+                        onclick="$('#signup').css('border-bottom','0px');$(this).css('border-bottom','10px solid #165606');$('#login1').show();$('#login2').hide();$('#error-container').hide();">
+                        Join
+                    </span>
                 </div>
-                <div id="progress-spin">
-                    <br />
-                    <a
-                        target="_blank"
-                        title="This is public room and anyone can join this room as its password is publicly available for testing purpose"
-                        href="/?cm9vbWlkPVRlc3Rpbmcma2V5PWRlbW9vZmFwcDEyISE="
-                        style="background: #7616acc7; font-weight: 100; text-decoration: none; color: white; padding: 6px;"
-                    >
-                        Join test room
-                    </a>
-                </div>
-                <div id="login1">
-                    <br />
-                    <span style="color: #f7be15; font-family: Dancing script; font-size: 1.46em;">Input credentials to continue with chattenger!</span><br />
-                    <br />
-                    <input style="border: 2px solid grey;" id="name" type="text" name="name" value="" placeholder="Enter your name!" /><br />
-                    <br />
-                    <input style="border: 2px solid grey;" id="roomid" type="text" name="roomid" value="" placeholder="Enter Room id!" /><br />
-                    <br />
-                    <input style="border: 2px solid grey;" id="pwd" type="password" name="password" value="" placeholder="Enter password for room!" /><br />
-                    <br />
-                    <div style="display: -webkit-flex; -webkit-flex-wrap: nowrap; display: flex; flex-wrap: nowrap; justify-content: space-around; max-width: 300px;">
-                        <label for="profilechangeinput" title="set a profile pic" style="width: 40px; background: #3a3a3a; padding: 8px; height: 40px; border-radius: 50%;">
-                            <i class="fa fa-user" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;"></i>
-                        </label>
-                        <button type="button" title="join now" name="button" onclick="setUsername()" style="background: #3a3a3a;">
-                            <i class="fas fa-sign-in-alt" style="font-size: 2em; background: #3a3a3a; color: #b3b8c5;" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-                <div id="login2">
-                    <br />
-                    <span style="color: #f7be15; font-size: 1.46em; font-family: Dancing script;">Create your own personal chat-room!</span><br />
-                    <br />
-                    <form autocomplete="off" onsubmit="return false">
-                        <input
-                            style="border: 2px solid grey;"
-                            id="newname"
-                            oninput="if($(this).val().trim()=='')$(this).css('border','red 2px solid'); else $(this).css('border','yellow 2px solid')"
-                            type="text"
-                            name="name2"
-                            value=""
-                            placeholder="Enter admin(your) name!"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            style="border: 2px solid grey;"
-                            id="newroomid"
-                            oninput="if($(this).val().trim().length<4||$(this).val().trim().length>8)$(this).css('border','red 2px solid'); else $(this).css('border','green 2px solid')"
-                            type="text"
-                            name="roomid"
-                            value=""
-                            placeholder="Enter Room id!"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            style="border: 2px solid grey;"
-                            id="newpwd"
-                            oninput="if($(this).val().trim().length<6||$(this).val().trim().length>20)$(this).css('border','red 2px solid'); else $(this).css('border','green 2px solid')"
-                            type="password"
-                            name="password"
-                            value=""
-                            placeholder="Enter password for your room!"
-                        />
-                        <br />
-                        <br />
-                        <input
-                            style="border: 2px solid grey;"
-                            id="newpopulation"
-                            oninput="if((Number($(this).val()))&&(Number($(this).val())>1)&&(Number($(this).val())==parseInt($(this).val())))$(this).css('border','green 2px solid'); else $(this).css('border','red 2px solid')"
-                            type="number"
-                            min="2"
-                            name="userNumber"
-                            value=""
-                            placeholder="Maximum no. of users for this group!"
-                        />
-                        <br />
-                        <br />
-                        <input style="border: 2px solid grey;" id="newadmincode" type="text" name="useradmincode" value="" placeholder="Enter security key!" /><br />
-                        <details style="width: 200px; color: yellow; background: rgba(0, 0, 0, 0.5);">
-                            <summary style="font-size: 1.4em; color: #0f0;">Get More info</summary>Using Security key,you can again enter your room as admin.<br />
-                            However ,you can enter as a normal user by changing your name but you can enter as admin iff you remember this security key.
-                        </details>
-                        <br />
-                        <br />
-                        <div style="display: flex; flex-wrap: nowrap; justify-content: space-around; max-width: 300px;">
-                            <label title="set a profile pic" for="profilechangeinput" style="width: 40px; background: #3a3a3a; padding: 8px; height: 40px; border-radius: 50%;">
-                                <i class="fa fa-user" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;"></i>
-                            </label>
-                            <button type="button" name="button" style="background: #3a3a3a;" onclick="setNewRoom()">
-                                <i class="fas fa-sign-in-alt" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;" aria-hidden="true" title="join now"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div id="error-container" style="color: red;">
-                    <span style="color: white;">
-                        Don't have credentials?<br />
-                        Click create option <br />
-                        to create your personal chat room
+                <div>
+                    <span style="font-size: 2em; color: #ff0b72; cursor: pointer;" id="signup"
+                        onclick="$('#signin').css('border-bottom','0px');$(this).css('border-bottom','10px solid #165606');$('#login2').show();$('#error-container').hide();$('#login1').hide();">
+                        Create
                     </span>
                 </div>
             </div>
-            <div id="chat-parent" style="height: 100%;">
-                <div
-                    id="Adv_toggler_menu"
-                    style="animation: f 0.3s; width: 300px; background: black; position: fixed; font-family: monospace; bottom: 60px; z-index: 900; left: calc(50% - 150px); color: yellow; font-weight: bold; display: none;"
-                >
-                    <div style="display: flex; flex-wrap: nowrap; background: black; cursor: pointer; justify-content: space-between; color: green; position: sticky; top: 0px; z-index: 11;">
-                        <span style="border-bottom: 5px solid red; width: 45%; cursor: pointer;" onclick="$(this).next().css('border','none');$(this).css('border-bottom','5px solid red');$('#Fav').show();$('#advmsg').hide();">
-                            Interface
-                        </span>
-                        <span style="width: 40%; cursor: pointer;" onclick="$(this).prev().css('border','none');$(this).css('border-bottom','5px solid red');$('#Fav').hide();$('#advmsg').css('display','flex');">other</span>
-                        <i class="fa fa-close" style="font-size: 1.6em; padding: 5px; padding-top: 0px; border-radius: 10px; color: red; font-weight: bold;" onclick="$(this).parent().parent().hide()"></i>
-                    </div>
-                    <div id="advmsg" style="display: none; flex-wrap: nowrap; justify-content: space-around; overflow: hidden;">
-                        <div id="recordado" title="send voice message" onclick="$(this).hide();$('#recordingstuff').show();$('#photoedit').hide();" style="width: 140px; height: 100px; padding-top: 20px;">
-                            <svg style="transform: scale(2.7, 2.7);" height="36px" width="36px" viewBox="0 0 36 36">
-                                <g fill="none" fill-rule="evenodd">
-                                    <g>
-                                        <polygon points="0 36 36 36 36 0 0 0"></polygon>
-                                        <path
-                                            d="M14,28 L22,28 C22.552,28 23,28.448 23,29 C23,29.552 22.552,30 22,30 L14,30 C13.448,30 13,29.552 13,29 C13,28.448 13.448,28 14,28 M18,22.5 C15.239,22.5 13,20.2615 13,17.5 L13,11 C13,8.2385 15.239,6 18,6 C20.761,6 23,8.2385 23,11 L23,17.5 C23,20.2615 20.761,22.5 18,22.5 M18,26.5 C13.0295,26.5 9,22.4705 9,17.5 C9,16.948 9.448,16.5 10,16.5 C10.552,16.5 11,16.948 11,17.5 C11,21.366 14.134,24.5 18,24.5 C21.866,24.5 25.0005,21.366 25.0005,17.5 L25,17.5 C25,16.948 25.448,16.5 26,16.5 C26.552,16.5 27,16.948 27,17.5 C27,22.4705 22.9705,26.5 18,26.5"
-                                            fill="#0099ff"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div style="width: 140px; height: 100px; padding-top: 20px;" title="edit a photo" id="photoedit" onclick="$('#webcam').show();$('#Adv_toggler_menu').hide()">
-                            <svg style="transform: scale(2.5, 2.7);" height="36px" width="36px" viewBox="0 0 36 36">
-                                <g fill="none" fill-rule="evenodd">
-                                    <g>
-                                        <polygon points="0 36 36 36 36 0 0 0"></polygon>
-                                        <path
-                                            d="M18.01125,23.50245 C15.52875,23.50745 13.51225,21.49495 13.50775,19.00845 C13.50275,16.52145 15.51175,14.50195 17.99425,14.49695 C20.47675,14.49245 22.49325,16.50445 22.49775,18.99145 C22.50225,21.47795 20.49375,23.49745 18.01125,23.50245 M17.99825,12.49945 C14.40825,12.50695 11.50325,15.42245 11.51025,19.01245 C11.51675,22.60195 14.43275,25.50695 18.02275,25.49995 C21.61275,25.49295 24.51775,22.57745 24.51125,18.98795 C24.50425,15.39745 21.58825,12.49295 17.99825,12.49945 M26.50025,28.99995 L9.50025,28.99995 C7.29125,28.99995 5.50025,27.20895 5.50025,24.99995 L5.50025,13.99995 C5.50025,11.79095 7.29125,9.99995 9.50025,9.99995 L10.00025,9.99995 C10.96025,9.99995 11.88175,9.61845 12.56075,8.93945 L13.43925,8.06045 C14.11825,7.38195 15.03975,6.99995 16.00025,6.99995 L20.00025,6.99995 C20.96025,6.99995 21.88175,7.38195 22.56075,8.06045 L23.43925,8.93945 C24.11825,9.61845 25.03975,9.99995 26.00025,9.99995 L26.50025,9.99995 C28.70925,9.99995 30.50025,11.79095 30.50025,13.99995 L30.50025,24.99995 C30.50025,27.20895 28.70925,28.99995 26.50025,28.99995"
-                                            fill="#0099ff"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div style="width: 200px; height: auto; display: none; animation: f 0.9s;" id="recordingstuff">
-                            <div style="width: 100px; height: 100px; border-radius: 50%; background: green; display: flex; justify-content: space-around; align-items: center; cursor: pointer;" id="recordmean">
-                                <span style="align-self: center; padding: 5px;" id="recordstart">Start</span>
-                                <span style="align-self: center; padding: 5px; display: none;" id="recordsend"><i class="fa fa-paper-plane" style="font-size: 1.7em;"></i></span>
-                            </div>
-                            <span
-                                id="cancelbtn"
-                                onclick="$('#recordingstuff').hide();$('#photoedit').show();$('#recordado').show();$('#recordcancel').click();"
-                                style="padding: 4px; cursor: pointer; color: black; font-weight: bold; background: red;"
-                            >
-                                Cancel&nbsp;
-                            </span>
-                            <span style="align-self: center; padding: 5px; display: none;" id="recordcancel"><i class="fa fa-close" style="font-size: 1.7em;"></i></span>
-                        </div>
-                    </div>
-                    <div id="Fav" style="overflow-x: hidden; display: block;">
-                        <br />
-                        <div style="display: flex; padding: 5px;">Change chat-color<input type="color" onchange="changechatColor(this)" style="width: 100px; height: 20px; align-content: center;" id="1" /></div>
-                        <br />
-                        <div style="display: flex; padding: 5px;">change text-color<input type="color" onchange="messagemainstyle(this,'textcolor')" id="2" style="width: 100px; height: 20px; align-self: center;" /></div>
-
-                        <br />
-                        <div style="text-align: left; padding: 5px;">
-                            change text-font
-                            <select id="4" onchange="messagemainstyle(this,'textfont')" style="width: 100px; margin-right: 30px; float: right; height: 20px; transform: scale(1, 1); /*! float: right; */">
-                                <option value="sans-serif" title="sans-serif">1</option>
-                                <option value=" 'Nunito', sans-serif" title="'Nunito', sans-serif">2</option>
-                                <option value="'Vollkorn', serif" title="'Vollkorn', serif">3</option>
-                                <option value="'Dancing Script', cursive" title="'Dancing Script', cursive">4</option>
-                                <option value="'chattenger'" title="'chattenger'">5*</option>
-                                <option value="New Century Schoolbook, TeX Gyre Schola, serif" title="New Century Schoolbook, TeX Gyre Schola, serif">6</option>
-                                <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif" title="'Palatino Linotype', 'Book Antiqua', Palatino, serif">7</option>
-                            </select>
-                        </div>
-                        <br />
-                        <div style="display: flex; justify-content: space-around; padding: 5px;">
-                            change font-size<input type="range" min="0.5" max="2" id="3" step="0.1" onchange="messagemainstyle(this,'textsize')" style="width: 100px; height: 20px;" />
-                        </div>
-
-                        <br />
-                        Select a favicon
-                        <hr style="margin: 8px; padding: 0;" />
-                        <div style="display: flex; flex-wrap: wrap; cursor: pointer;">
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                id="selectedfavicon"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                <i class="fa fa-thumbs-up" style="color: #fbcc5a; font-size: 1em;" aria-hidden="true"></i>
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128074;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128075;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                <i class="fa fa-thumbs-down" style="color: #fbcc5a; font-size: 1em;" aria-hidden="true"></i>
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#127801;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128520;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128521;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128527;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128121;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#129409;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#129419;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#129303;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#129344;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128139;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128142;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.2,1.2)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128147;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128148;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128157;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128165;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128169;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128170;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128329;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128512;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128514;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128525;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128526;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128531;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 25%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128532;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128536;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128539;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128545;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128557;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128558;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128584;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128585;
-                            </div>
-                            <div
-                                style="color: red; font-size: 1.2em; width: 24%;"
-                                onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
-                                ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
-                                onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');"
-                            >
-                                &#128586;
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="stylingtools" style="display: none; flex-wrap: wrap; width: 300px; background: black; position: fixed; bottom: 60px; z-index: 900; right: calc(50% - 150px); color: yellow; font-weight: bold;">
-                    <nav style="position: sticky; top: 0px; display: flex; flex-wrap: nowrap; justify-content: space-around; font-family: monospace; font-size: 1.2em;">
-                        <a onclick="$('#b').show(500);$('#a').hide();$(this).css('border-bottom','6px solid green');$(this).next().css('border-bottom','0');" style="border-bottom: 6px solid green;">General</a>
-                        <a
-                            style="border-bottom: 0px;"
-                            onclick="$('#a').show(500);$('#b').hide();$('#wallpaperoption img').each(function(){if(!this.src){this.src = this.id;this.onload=()=>$(this).css('display','block')}});$(this).css('border-bottom','6px solid green');$(this).prev().css('border-bottom','0');"
-                        >
-                            wallpaper
-                        </a>
-                        <i class="fa fa-close" style="float: right; font-weight: bold; font-size: 1.1em; padding: 5px; background: red;" onclick="$(this).parent().parent().hide(500)" aria-hidden="true"></i>
-                    </nav>
-                    <div id="b" style="text-align: center; display: block;">
-                        <p style="font-family: monospace; font-size: 1em; text-align: justify; padding-left: 50px;">
-                            <input type="checkbox" id="beeper" onclick="stopsong()" style="width: 18px; height: 18px;" value="" />&nbsp;&nbsp;&nbsp;Turn off usual sound<br />
-                            <br />
-                            <input type="checkbox" id="fullvideo" style="width: 18px; height: 18px;" value="" />&nbsp;&nbsp;&nbsp;Full video display in vc<br />
-                            <br />
-                            <input type="checkbox" id="datasaver" style="width: 18px; height: 18px;" value="" />&nbsp;&nbsp;&nbsp;Data saving in call
-                        </p>
-                        <span style="font-family: monospace;">Listen to your dream</span><br />
-                        <br />
-                        <div style="display: flex; font-size: 20px; justify-content: space-around;">
-                            <i class="fa fa-backward" title="previous music" onclick="controlmusic(0,this)" aria-hidden="true"></i><span class="sr-only">previous music</span>
-                            <i class="fa fa-play" title="play/pause" onclick="controlmusic(1,this)" aria-hidden="true"></i><span class="sr-only">play/pause</span>
-                            <i class="fa fa-forward" onclick="controlmusic(2,this)" title="next music" aria-hidden="true"></i><span class="sr-only">next music</span>
-                        </div>
-                        <hr />
-                        <div style="display: flex; font-size: 20px; justify-content: space-around;">
-                            <input type="file" accept="audio/*" onchange="changemusic(this)" id="addmusic" style="display: none;" />
-                            <label title="add your favourite music" for="addmusic">
-                                <i class="fa fa-music" aria-hidden="true"></i><sub><i class="fa fa-plus" style="font-size: 10px;" aria-hidden="true"></i></sub>
-                            </label>
-                            <i class="fa fa-refresh" title="restart this music" onclick="controlmusic(3,this)" aria-hidden="true"></i><span class="sr-only">restart this music</span>
-                            <i class="fas fa-slash" title="enable loop" onclick="controlmusic(4,this)" aria-hidden="true"></i><span class="sr-only">enable loop</span>
-                        </div>
-                        <div id="allmusic">
-                            <form autocomplete="off" onsubmit="return false"><input type="text" id="musicsearch" placeholder="🔍 search short music 🎵" oninput="fetchMusic(this.value)" style="display: inline-block; width: 90%;" /></form>
-
-                            <div id="displaymusic" style="width: 100%; max-height: 100px;"></div>
-                            <audio src="/assets/a1.mp3" style="display: none;"></audio> <audio id="/assets/a2.mp3" style="display: none;"></audio> <audio id="/assets/a3.mp3" style="display: none;"></audio>
-                            <audio id="/assets/a4.mp3" style="display: none;"></audio> <audio id="/assets/a5.mp3" style="display: none;"></audio>
-                            <div id="onlinemusic" style="display: flex; width: 100%; flex-wrap: wrap;"></div>
-                        </div>
-                    </div>
-                    <div id="a" style="display: none;">
-                        <div id="wallpaperoption" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-                            <span><img id="/assets/audiocallwallpaper.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span> <img id="/assets/bg2.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
-                            <span> <img id="/assets/bg3.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span> <img id="/assets/background.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
-                            <span> <img id="/assets/scene.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /> </span><span><img id="/assets/i7p.png" onclick="cb(this,0)" crossorigin="anonymous" /> </span>
-                            <span><img id="/assets/gn.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span><img id="/assets/gm.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
-                            <span> <img id="/assets/index.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span><img id="/assets/i4p.jpg" onclick="cb(this,0)" crossorigin="anonymous" /> </span>
-                            <span><img id="/assets/i3p.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /> </span><span><img id="/assets/74904.jpg" onclick="cb(this,0)" crossorigin="anonymous" /> </span>
-                            <span><img id="/assets/gm.gif" onclick="cb(this,0)" crossorigin="anonymous" /></span><span><img id="/assets/Gn.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
-                        </div>
-                        Bg-color:
-                        <input
-                            type="color"
-                            onchange="$('#whole').css('background-image','none').css('background-color',this.value);$('#head').css('background-color','#4E4E4E');$('#msg-sender').css('background',this.value);"
-                            style="width: 60px; height: 20px; border-radius: 50%;"
-                        />
-                        <div style="display: flex; flex-wrap: nowrap; justify-content: space-around;">
-                            <input type="file" id="chatbgupload" accept="image/*" onchange="cb(this,1)" style="display: none;" />
-                            <label for="chatbgupload"><i class="fa fa-plus" style="font-size: 1.3em; padding: 10px; background: green;" title="add background" aria-hidden="true"></i><span class="sr-only">add background</span></label>
-                            <i class="fa fa-close" style="font-size: 1.3em; padding: 10px; background: red;" onclick="cb(this,2)" title="remove background" aria-hidden="true"></i><span class="sr-only">remove background</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="chatroom" style="display: none; height: 100%;"></div>
-            </div>
-            <div id="videocallingpage">
-                <video id="selfview" style="display: flex;" class="large" autoplay muted playsinline></video>
-                <i class="fa fa-microphone-slash" style="color: #fff; font-size: 1.1em; position: absolute; bottom: 50%; left: 50%; z-index: 10; visibility: hidden;"></i>
-                <div id="videocontainer"></div>
-                <div style="position: sticky; bottom: 30px; z-index: 6; margin: auto; display: flex; max-width: 360px; flex-wrap: nowrap; justify-content: space-between;" id="controls">
-                    <i class="fa fa-user-plus" style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;" title="Add users" id="adduser"></i>
-                    <i
-                        class="fa fa-comment"
-                        id="displaychat"
-                        style="font-size: 1.8em; color: yellow; border-radius: 50%; width: 40px; height: 40px;"
-                        title="go to chat"
-                        onclick="$('#videocallingpage').hide();$('#chatroom').show();$(this).children(0).css('display','none').text('');$('#chat-parent').show();showheader('video');$('#content').attr('content','width=device-width,initial-scale=1.0,user-scalable=no');"
-                    >
-                        <div class="notice-marker"></div>
-                    </i>
-                    <i class="fa fa-television" style="font-size: 1.8em; color: yellow; border-radius: 50%; width: 40px; height: 40px;" title="share screen" id="sharescreen"></i>
-                    <i class="fa fa-refresh" style="font-size: 1.8em; color: rgb(3, 252, 252); border-radius: 50%; width: 40px; height: 40px;" title="toggle camera" id="togglecamera"></i>
-                    <i id="videooff" title="on/off the camera" class="fa fa-video-camera" style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;"></i>
-                    <i id="audiooff" title="on/off the microphone" class="fa fa-microphone" style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;"></i>
-                    <i title="hangup" class="fas fa-phone-slash" id="hangUpBtn" style="border-radius: 50%; color: #f00; font-size: 1.8em; width: 40px; height: 40px; display: flex;"> </i>
-                </div>
-            </div>
-            <div id="voicecallingpage">
-                <div id="audiocontainer" style="display: none;"></div>
-                <audio autoplay muted id="selfaudio"></audio>
-                <div id="controls2" style="position: sticky; bottom: 30px; margin: auto; display: flex; max-width: 360px; flex-wrap: nowrap; justify-content: space-between;">
-                    <i class="fa fa-user-plus" style="border-radius: 50%; font-size: 2em; color: #0f0; width: 50px; height: 50px;" title="Add users" id="adduser2"></i>
-                    <i
-                        class="fa fa-comment"
-                        style="font-size: 2em; color: yellow; border-radius: 50%; width: 50px; height: 50px;"
-                        title="go to chat"
-                        onclick="$('#voicecallingpage').hide(450);$(this).children(0).css('display','none').text('');$('#chat-parent').show();$('#chatroom').show();showheader('voice');"
-                    >
-                        <div class="notice-marker"></div>
-                    </i>
-                    <i id="audiooff2" title="on/off the microphone" class="fa fa-microphone" style="border-radius: 50%; font-size: 2em; color: #0f0; width: 50px; height: 50px;"></i>
-                    <i title="hangup" class="fas fa-phone-slash" id="hangUpBtn2" style="border-radius: 50%; color: red; font-size: 2em; width: 50px; height: 50px; display: flex;"> </i>
-                </div>
-                <div id="showaudioconnection" style="display: flex; flex-wrap: wrap; scrollbar-width: none; position: sticky; justify-content: space-around; max-width: 700px; top: 150px; overflow-x: auto;"></div>
-            </div>
-            <div id="userlist" style="width: 200px; max-height: 200px; animation: f 0.6s; position: fixed; overflow-y: auto; top: 140px; left: calc(50% - 100px); display: none; z-index: 2000;">Select user to call<br /></div>
-
-            <div id="webcam" style="display: none; animation: f 0.8s;">
-                <div id="filteroption" style="display: flex; flex-wrap: nowrap; justify-content: space-around; background: violet; color: white;">
-                    <div id="brightness-filter" class="activefilter"><i class="fas fa-lightbulb" style="font-size: 1.4em;"></i></div>
-                    <div id="contrast-filter"><i class="fas fa-table" style="font-size: 1.4em;"></i></div>
-                    <div id="saturation-filter"><i class="fas fa-adjust" style="font-size: 1.4em;"></i></div>
-                    <div id="hue-filter"><i class="fas fa-atom" style="font-size: 1.4em;"></i></div>
-                    <div id="sepia-filter"><i class="fas fa-map" style="font-size: 1.4em;"></i></div>
-                    <div id="opacity-filter"><i class="fa fa-angle-down" style="font-size: 1.4em;"></i></div>
-                    <div id="invert-filter"><i class="fa fa-undo" style="font-size: 1.4em;"></i></div>
-                    <div id="grayscale-filter"><i class="fa fa-cloud" style="font-size: 1.4em;"></i></div>
-                    <div id="blur-filter"><i class="fa fa-tint" style="font-size: 1.4em;"></i></div>
-                    <div id="crop-filter"><i class="fas fa-crop-alt" style="font-size: 1.4em;"></i></div>
-                    <div id="custom-filter" style="display: none;"><i class="fa fa-filter" style="font-size: 1.4em;"></i></div>
-                </div>
-                <div style="width: 100%; background: black; height: 400px;">
-                    <div id="canvas-cropper" style="position: absolute; top: 34px; left: 0px;">
-                        <div id="cropper-sieve" style="background: rgba(255, 0, 0, 0.3); display: none;"></div>
-                        <canvas id="filter-canvas"></canvas>
-                        <div id="cropper-grid" style="display: none; background: rgba(0, 255, 0, 0.3); position: absolute; top: 10px; width: 80px; height: 60px; border: 2px solid white; resize: both; overflow: auto;"></div>
-                    </div>
-                </div>
-                <div style="display: flex; flex-wrap: nowrap; width: 100%;">
-                    <div id="add-img" style="background: #eabe11; padding: 8px 10px; width: 6.66%;">
-                        <input type="file" id="filterfile" accept="image/*" onchange="filterimgupload(this)" /><label for="filterfile"><i class="fas fa-plus" style="color: #4f534f; font-size: 1.8em;"></i></label>
-                    </div>
-                    <div id="camcontroller" style="width: 80%; background: violet;">
-                        <div id="camrange-div">
-                            <input type="range" min="0" max="200" id="camrange" style="width: 80%;" /><br />
-                            <span id="filter-name"></span>
-                        </div>
-                        <div style="display: none; flex-wrap: nowrap; justify-content: space-around; color: black;" id="cropper-tools">
-                            <i class="fa fa-check" id="done-cropping" style="padding: 6px 10px; background: green;"></i>
-                            <i class="fa fa-close" id="exit-cropping" style="padding: 6px 10px; background: red;" onclick="$('#brightness-filter').click()"></i>
-                        </div>
-                        <div id="custom-div" style="display: none; flex-wrap: nowrap; justify-content: space-between; color: red; font-size: 1.8em;">
-                            <div id="custom-div-sticker"><i class="fa fa-heart"></i></div>
-                            <div id="custom-div-write">📝</div>
-                            <div id="custom-div-flip"><i class="fa fa-refresh"></i></div>
-                        </div>
-                    </div>
-                    <div id="cancel-filter-img" style="background: #eabe11; width: 6.66%; padding: 8px 10px; border-right: 1px solid black; color: #4f534f;"><i class="fa fa-close" style="font-size: 1.8em;"></i></div>
-                    <div id="send-filter-img" style="background: #eabe11; width: 6.66%; color: #4f534f; padding: 8px 10px;"><i class="fa fa-paper-plane" style="font-size: 1.8em;"></i></div>
-                </div>
-            </div>
-        </center>
-        <input type="file" accept="image/*" id="profilechangeinput" onchange="uploadToImgur(this)" />
-        <div id="replytomsg" style="position: fixed; background: #353131; border-radius: 6px; border-left: 3px solid blue; padding: 5px; display: none; flex-wrap: nowrap; border-bottom: 1px solid grey;">
-            <div style="width: 95%;" id="replyorrefer">
-                <a id="replytextparent" style="text-decoration: none;">
-                    <div style="width: 100%;">
-                        <div id="replytexthead" style="width: 104%; padding: 2px 4px; text-align: left; border-bottom: 3px solid violet; color: #f0e7e7;"></div>
-                        <div id="replytext" style="padding-left: 4px; word-break: break-all; color: #d2b6b6; padding-top: 3px;"></div>
-                    </div>
+            <div id="progress-spin">
+                <br />
+                <a target="_blank"
+                    title="This is public room and anyone can join this room as its password is publicly available for testing purpose"
+                    href="/?cm9vbWlkPVRlc3Rpbmcma2V5PWRlbW9vZmFwcDEyISE="
+                    style="background: #7616acc7; font-weight: 100; text-decoration: none; color: white; padding: 6px;">
+                    Join public room
                 </a>
             </div>
-            <div
-                style="padding-right: 8px; color: red; margin-top: -2px; margin-right: 2px;"
-                id="replytextclose"
-                onclick="$(this).parent().hide(200);$('#replytextparent').attr('class','#');$('#replytext').text('');$('#replytexthead').text('');$('#message').focus()"
-            >
-                <i class="fa fa-close" style="font-weight: bold; font-size: 1.5em;"></i>
+            <div id="login1">
+                <br />
+                <span style="color: #f7be15; font-family: Dancing script; font-size: 1.46em;">Input credentials to
+                    continue with chattenger!</span><br />
+                <br />
+                <input style="border: 2px solid grey;" id="name" type="text" name="name" value=""
+                    placeholder="Enter your name!" /><br />
+                <br />
+                <input style="border: 2px solid grey;" id="roomid" type="text" name="roomid" value=""
+                    placeholder="Enter Room id!" /><br />
+                <br />
+                <input style="border: 2px solid grey;" id="pwd" type="password" name="password" value=""
+                    placeholder="Enter password for room!" /><br />
+                <br />
+                <div
+                    style="display: -webkit-flex; -webkit-flex-wrap: nowrap; display: flex; flex-wrap: nowrap; justify-content: space-around; max-width: 300px;">
+                    <label for="profilechangeinput" title="set a profile pic"
+                        style="width: 40px; background: #3a3a3a; padding: 8px; height: 40px; border-radius: 50%;">
+                        <i class="fa fa-user" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;"></i>
+                    </label>
+                    <button type="button" title="join now" name="button" onclick="setUsername()"
+                        style="background: #3a3a3a;">
+                        <i class="fas fa-sign-in-alt" style="font-size: 2em; background: #3a3a3a; color: #b3b8c5;"
+                            aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="login2">
+                <br />
+                <span style="color: #f7be15; font-size: 1.46em; font-family: Dancing script;">Create your own personal
+                    chat-room!</span><br />
+                <br />
+                <form autocomplete="off" onsubmit="return false">
+                    <input style="border: 2px solid grey;" id="newname"
+                        oninput="if($(this).val().trim()=='')$(this).css('border','red 2px solid'); else $(this).css('border','yellow 2px solid')"
+                        type="text" name="name2" value="" placeholder="Enter admin(your) name!" />
+                    <br />
+                    <br />
+                    <input style="border: 2px solid grey;" id="newroomid"
+                        oninput="if($(this).val().trim().length<4||$(this).val().trim().length>8)$(this).css('border','red 2px solid'); else $(this).css('border','green 2px solid')"
+                        type="text" name="roomid" value="" placeholder="Enter Room id!" />
+                    <br />
+                    <br />
+                    <input style="border: 2px solid grey;" id="newpwd"
+                        oninput="if($(this).val().trim().length<6||$(this).val().trim().length>20)$(this).css('border','red 2px solid'); else $(this).css('border','green 2px solid')"
+                        type="password" name="password" value="" placeholder="Enter password for your room!" />
+                    <br />
+                    <br />
+                    <input style="border: 2px solid grey;" id="newpopulation"
+                        oninput="if((Number($(this).val()))&&(Number($(this).val())>1)&&(Number($(this).val())==parseInt($(this).val())))$(this).css('border','green 2px solid'); else $(this).css('border','red 2px solid')"
+                        type="number" min="2" name="userNumber" value=""
+                        placeholder="Maximum no. of users for this group!" />
+                    <br />
+                    <br />
+                    <input style="border: 2px solid grey;" id="newadmincode" type="text" name="useradmincode" value=""
+                        placeholder="Enter security key!" /><br />
+                    <details style="width: 200px; color: yellow; background: rgba(0, 0, 0, 0.5);">
+                        <summary style="font-size: 1.4em; color: #0f0;">Get More info</summary>Using Security key,you
+                        can again enter your room as admin.<br />
+                        However ,you can enter as a normal user by changing your name but you can enter as admin iff you
+                        remember this security key.
+                    </details>
+                    <br />
+                    <br />
+                    <div style="display: flex; flex-wrap: nowrap; justify-content: space-around; max-width: 300px;">
+                        <label title="set a profile pic" for="profilechangeinput"
+                            style="width: 40px; background: #3a3a3a; padding: 8px; height: 40px; border-radius: 50%;">
+                            <i class="fa fa-user" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;"></i>
+                        </label>
+                        <button type="button" name="button" style="background: #3a3a3a;" onclick="setNewRoom()">
+                            <i class="fas fa-sign-in-alt" style="font-size: 2em; color: #b3b8c5; background: #3a3a3a;"
+                                aria-hidden="true" title="join now"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="error-container" style="color: red;">
+                <span style="color: white;">
+                    Don't have credentials?<br />
+                    Click create option <br />
+                    to create your personal chat room
+                </span>
             </div>
         </div>
+        <div id="chat-parent" style="height: 100%;">
+            <div id="Adv_toggler_menu"
+                style="animation: f 0.3s; width: 300px; background: black; position: fixed; font-family: monospace; bottom: 60px; z-index: 900; left: calc(50% - 150px); color: yellow; font-weight: bold; display: none;">
+                <div
+                    style="display: flex; flex-wrap: nowrap; background: black; cursor: pointer; justify-content: space-between; color: green; position: sticky; top: 0px; z-index: 11;">
+                    <span style="border-bottom: 5px solid red; width: 45%; cursor: pointer;"
+                        onclick="$(this).next().css('border','none');$(this).css('border-bottom','5px solid red');$('#Fav').show();$('#advmsg').hide();">
+                        Interface
+                    </span>
+                    <span style="width: 40%; cursor: pointer;"
+                        onclick="$(this).prev().css('border','none');$(this).css('border-bottom','5px solid red');$('#Fav').hide();$('#advmsg').css('display','flex');">other</span>
+                    <i class="fa fa-close"
+                        style="font-size: 1.6em; padding: 5px; padding-top: 0px; border-radius: 10px; color: red; font-weight: bold;"
+                        onclick="$(this).parent().parent().hide()"></i>
+                </div>
+                <div id="advmsg"
+                    style="display: none; flex-wrap: nowrap; justify-content: space-around; overflow: hidden;">
+                    <div id="recordado" title="send voice message"
+                        onclick="$(this).hide();$('#recordingstuff').show();$('#photoedit').hide();"
+                        style="width: 140px; height: 100px; padding-top: 20px;">
+                        <svg style="transform: scale(2.7, 2.7);" height="36px" width="36px" viewBox="0 0 36 36">
+                            <g fill="none" fill-rule="evenodd">
+                                <g>
+                                    <polygon points="0 36 36 36 36 0 0 0"></polygon>
+                                    <path
+                                        d="M14,28 L22,28 C22.552,28 23,28.448 23,29 C23,29.552 22.552,30 22,30 L14,30 C13.448,30 13,29.552 13,29 C13,28.448 13.448,28 14,28 M18,22.5 C15.239,22.5 13,20.2615 13,17.5 L13,11 C13,8.2385 15.239,6 18,6 C20.761,6 23,8.2385 23,11 L23,17.5 C23,20.2615 20.761,22.5 18,22.5 M18,26.5 C13.0295,26.5 9,22.4705 9,17.5 C9,16.948 9.448,16.5 10,16.5 C10.552,16.5 11,16.948 11,17.5 C11,21.366 14.134,24.5 18,24.5 C21.866,24.5 25.0005,21.366 25.0005,17.5 L25,17.5 C25,16.948 25.448,16.5 26,16.5 C26.552,16.5 27,16.948 27,17.5 C27,22.4705 22.9705,26.5 18,26.5"
+                                        fill="#0099ff"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div style="width: 140px; height: 100px; padding-top: 20px;" title="edit a photo" id="photoedit"
+                        onclick="$('#webcam').show();$('#Adv_toggler_menu').hide()">
+                        <svg style="transform: scale(2.5, 2.7);" height="36px" width="36px" viewBox="0 0 36 36">
+                            <g fill="none" fill-rule="evenodd">
+                                <g>
+                                    <polygon points="0 36 36 36 36 0 0 0"></polygon>
+                                    <path
+                                        d="M18.01125,23.50245 C15.52875,23.50745 13.51225,21.49495 13.50775,19.00845 C13.50275,16.52145 15.51175,14.50195 17.99425,14.49695 C20.47675,14.49245 22.49325,16.50445 22.49775,18.99145 C22.50225,21.47795 20.49375,23.49745 18.01125,23.50245 M17.99825,12.49945 C14.40825,12.50695 11.50325,15.42245 11.51025,19.01245 C11.51675,22.60195 14.43275,25.50695 18.02275,25.49995 C21.61275,25.49295 24.51775,22.57745 24.51125,18.98795 C24.50425,15.39745 21.58825,12.49295 17.99825,12.49945 M26.50025,28.99995 L9.50025,28.99995 C7.29125,28.99995 5.50025,27.20895 5.50025,24.99995 L5.50025,13.99995 C5.50025,11.79095 7.29125,9.99995 9.50025,9.99995 L10.00025,9.99995 C10.96025,9.99995 11.88175,9.61845 12.56075,8.93945 L13.43925,8.06045 C14.11825,7.38195 15.03975,6.99995 16.00025,6.99995 L20.00025,6.99995 C20.96025,6.99995 21.88175,7.38195 22.56075,8.06045 L23.43925,8.93945 C24.11825,9.61845 25.03975,9.99995 26.00025,9.99995 L26.50025,9.99995 C28.70925,9.99995 30.50025,11.79095 30.50025,13.99995 L30.50025,24.99995 C30.50025,27.20895 28.70925,28.99995 26.50025,28.99995"
+                                        fill="#0099ff"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div style="width: 200px; height: auto; display: none; animation: f 0.9s;" id="recordingstuff">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background: green; display: flex; justify-content: space-around; align-items: center; cursor: pointer;"
+                            id="recordmean">
+                            <span style="align-self: center; padding: 5px;" id="recordstart">Start</span>
+                            <span style="align-self: center; padding: 5px; display: none;" id="recordsend"><i
+                                    class="fa fa-paper-plane" style="font-size: 1.7em;"></i></span>
+                        </div>
+                        <span id="cancelbtn"
+                            onclick="$('#recordingstuff').hide();$('#photoedit').show();$('#recordado').show();$('#recordcancel').click();"
+                            style="padding: 4px; cursor: pointer; color: black; font-weight: bold; background: red;">
+                            Cancel&nbsp;
+                        </span>
+                        <span style="align-self: center; padding: 5px; display: none;" id="recordcancel"><i
+                                class="fa fa-close" style="font-size: 1.7em;"></i></span>
+                    </div>
+                </div>
+                <div id="Fav" style="overflow-x: hidden; display: block;">
+                    <br />
+                    <div style="display: flex; padding: 5px;">Change chat-color<input type="color"
+                            onchange="changechatColor(this)" style="width: 100px; height: 20px; align-content: center;"
+                            id="1" /></div>
+                    <br />
+                    <div style="display: flex; padding: 5px;">change text-color<input type="color"
+                            onchange="messagemainstyle(this,'textcolor')" id="2"
+                            style="width: 100px; height: 20px; align-self: center;" /></div>
 
-        <script>
-            try {
-                if ("serviceWorker" in navigator) {
-                    window.addEventListener("load", function () {
-                        navigator.serviceWorker
-                            .register("/sw.js")
-                            .then((res) => console.log("service worker registered"))
-                            .catch((err) => console.log("service worker not registered", err));
-                    });
-                }
-                if (!navigator.onLine) {
-                    window.location.assign("/offline.html");
-                }
+                    <br />
+                    <div style="text-align: left; padding: 5px;">
+                        change text-font
+                        <select id="4" onchange="messagemainstyle(this,'textfont')"
+                            style="width: 100px; margin-right: 30px; float: right; height: 20px; transform: scale(1, 1); /*! float: right; */">
+                            <option value="sans-serif" title="sans-serif">1</option>
+                            <option value="'Nunito', sans-serif" title="'Nunito', sans-serif">2</option>
+                            <option value="'Vollkorn', serif" title="'Vollkorn', serif">3</option>
+                            <option value="'Dancing Script', cursive" title="'Dancing Script', cursive">4</option>
+                            <option value="'chattenger'" title="'chattenger'">5*</option>
+                            <option value="New Century Schoolbook, TeX Gyre Schola, serif"
+                                title="New Century Schoolbook, TeX Gyre Schola, serif">6</option>
+                            <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif"
+                                title="'Palatino Linotype', 'Book Antiqua', Palatino, serif">7</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div style="display: flex; justify-content: space-around; padding: 5px;">
+                        change font-size<input type="range" min="0.5" max="2" id="3" step="0.1"
+                            onchange="messagemainstyle(this,'textsize')" style="width: 100px; height: 20px;" />
+                    </div>
+                    <br />
+                    <div style="display: flex; justify-content: space-around; padding: 5px;" title="Make message pieces look transparent">
+                        change Opacity<input type="range" min="0.8" max="1" id="opacityranger" step="0.04"
+                            onchange="messagemainstyle(this,'opacity')" style="width: 100px; height: 20px;" />
+                    </div>
 
-                const AddToHomeScreen = (event) => {
-                    event.userChoice.then((choiceResult) => {
-                        console.log(choiceResult);
-                    });
-                    //This is to prevent `beforeinstallprompt` event that triggers again on `Add` or `Cancel` click
-                    window.removeEventListener("beforeinstallprompt", AddToHomeScreen);
-                };
-                window.addEventListener("beforeinstallprompt", AddToHomeScreen);
-            } catch (e) {
-                alert("Your browser does not support current ES6 js module.Consider updating it or use another compatible browser like chrome,firefox.");
-                document.body.innerHTML = "";
-            }
-        </script>
-        <noscript>
-            👺️👺️ Your browser does not support javascript 👺️👺️!!
-        </noscript>
-        <script type="text/javascript" src="/script/socket.io.js"></script>
-        <!-- Photo filter script -->
-        <script src="/script/photofilter.js?v=1.1.1" async=""></script>
-        <script src="/script/setup.js?v=1.1.1"></script>
-        <script src="/script/kit.js"></script>
-        <script src="/script/main.js?v=1.1.2"></script>
-        <script src="/script/nextstep.js?v=1.1.2"></script>
-        <script type="text/javascript">
-            //let beeper = document.getElementById('beeper');
-            window.addEventListener("appinstalled", (event) => {
-                Renderconfirm("Thanks for installing app 🎉🎉🎉!", true);
-            });
-            $("body").animate({ opacity: 1 });
-            if (localStorage.getItem("isSilent") == "true") {
-                beeper.checked = true;
-            } else {
-                beeper.checked = false;
-            }
-            localStorage.getItem("fullvideo") == "true" && ($(".large").first().css("object-fit", "cover"), (document.getElementById("fullvideo").checked = true)),
-                localStorage.getItem("fullvideo") == "false" && ($(".large").first().css("object-fit", ""), (document.getElementById("fullvideo").checked = false));
-            document.getElementById("fullvideo").addEventListener("click", function () {
-                localStorage.setItem("fullvideo", this.checked);
-                if (this.checked) $(".large").first().css("object-fit", "cover");
-                else $(".large").first().css("object-fit", "");
-            });
-            $("#videocallingpage video").each(function (v) {
-                v.onloadedmetadata = function () {
-                    v.play();
-                };
-            });
-        </script>
-    </body>
+                    <br />
+                    Select a favicon
+                    <hr style="margin: 8px; padding: 0;" />
+                    <div style="display: flex; flex-wrap: wrap; cursor: pointer;">
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            id="selectedfavicon"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            <i class="fa fa-thumbs-up" style="color: #fbcc5a; font-size: 1em;" aria-hidden="true"></i>
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128074;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128075;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            <i class="fa fa-thumbs-down" style="color: #fbcc5a; font-size: 1em;" aria-hidden="true"></i>
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#127801;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128520;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128521;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128527;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128121;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#129409;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#129419;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#129303;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#129344;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128139;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128142;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.2,1.2)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128147;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128148;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128157;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128165;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128169;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128170;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128329;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128512;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128514;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128525;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128526;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128531;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 25%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128532;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128536;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128539;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128545;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128557;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128558;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128584;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128585;
+                        </div>
+                        <div style="color: red; font-size: 1.2em; width: 24%;"
+                            onmouseover="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchstart="$(this).css('transform','scale(1.5,1.5)').css('z-index','10').css('transition','0.5s')"
+                            ontouchend="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onmouseout="$(this).css('transform','scale(1,1)').css('transition','0.5s').css('z-index',1)"
+                            onclick="document.getElementById('selectedfavicon').setAttribute('id','');this.setAttribute('id','selectedfavicon');">
+                            &#128586;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="stylingtools"
+                style="display: none; flex-wrap: wrap; width: 300px; background: black; position: fixed; bottom: 60px; z-index: 900; right: calc(50% - 150px); color: yellow; font-weight: bold;">
+                <nav
+                    style="position: sticky; top: 0px; display: flex; flex-wrap: nowrap; justify-content: space-around; font-family: monospace; font-size: 1.2em;">
+                    <a onclick="$('#b').show(500);$('#a').hide();$(this).css('border-bottom','6px solid green');$(this).next().css('border-bottom','0');"
+                        style="border-bottom: 6px solid green;">General</a>
+                    <a style="border-bottom: 0px;"
+                        onclick="$('#a').show(500);$('#b').hide();$('#wallpaperoption img').each(function(){if(!this.src){this.src = this.id;this.onload=()=>$(this).css('display','block')}});$(this).css('border-bottom','6px solid green');$(this).prev().css('border-bottom','0');">
+                        wallpaper
+                    </a>
+                    <i class="fa fa-close"
+                        style="float: right; font-weight: bold; font-size: 1.1em; padding: 5px; background: red;"
+                        onclick="$(this).parent().parent().hide(500)" aria-hidden="true"></i>
+                </nav>
+                <div id="b" style="text-align: center; display: block;">
+                    <p style="font-family: monospace; font-size: 1em; text-align: justify; padding-left: 50px;">
+                        <input type="checkbox" id="beeper" onclick="stopsong()" style="width: 18px; height: 18px;"
+                            value="" />&nbsp;&nbsp;&nbsp;Turn off usual sound<br />
+                        <br />
+                        <input type="checkbox" id="fullvideo" style="width: 18px; height: 18px;"
+                            value="" />&nbsp;&nbsp;&nbsp;Full video display in vc<br />
+                        <br />
+                        <input type="checkbox" id="typingtoggle" style="width: 18px; height: 18px;" value=""
+                            onchange="ToggleTypingIndicator()"
+                            title="You will not receive or send typing indicator when turned on" />&nbsp;&nbsp;&nbsp;Disable
+                        typing indicator<br />
+                        <br />
+                        <input type="checkbox" id="calldisabled" style="width: 18px; height: 18px;" value=""                            
+                            title="You will no longer be able to call other users or receive call from them" />&nbsp;&nbsp;&nbsp;Disable
+                        call feature<br />
+                        <br />
+                        <input type="checkbox" id="datasaver" style="width: 18px; height: 18px;"
+                            value="" />&nbsp;&nbsp;&nbsp;Data saving in call
+                    </p>
+                    <span style="font-family: monospace;">Listen to your dream</span><br />
+                    <br />
+                    <div style="display: flex; font-size: 20px; justify-content: space-around;">
+                        <i class="fa fa-backward" title="previous music" onclick="controlmusic(0,this)"
+                            aria-hidden="true"></i><span class="sr-only">previous music</span>
+                        <i class="fa fa-play" title="play/pause" onclick="controlmusic(1,this)"
+                            aria-hidden="true"></i><span class="sr-only">play/pause</span>
+                        <i class="fa fa-forward" onclick="controlmusic(2,this)" title="next music"
+                            aria-hidden="true"></i><span class="sr-only">next music</span>
+                    </div>
+                    <hr />
+                    <div style="display: flex; font-size: 20px; justify-content: space-around;">
+                        <input type="file" accept="audio/*" onchange="changemusic(this)" id="addmusic"
+                            style="display: none;" />
+                        <label title="add your favourite music" for="addmusic">
+                            <i class="fa fa-music" aria-hidden="true"></i><sub><i class="fa fa-plus"
+                                    style="font-size: 10px;" aria-hidden="true"></i></sub>
+                        </label>
+                        <i class="fa fa-refresh" title="restart this music" onclick="controlmusic(3,this)"
+                            aria-hidden="true"></i><span class="sr-only">restart this music</span>
+                        <i class="fas fa-slash" title="enable loop" onclick="controlmusic(4,this)"
+                            aria-hidden="true"></i><span class="sr-only">enable loop</span>
+                    </div>
+                    <div id="allmusic">
+                        <form autocomplete="off" onsubmit="return false"><input type="text" id="musicsearch"
+                                placeholder="🔍 search short music 🎵" oninput="fetchMusic(this.value)"
+                                style="display: inline-block; width: 90%;" /></form>
+
+                        <div id="displaymusic" style="width: 100%; max-height: 100px;"></div>
+                        <audio src="/assets/a1.mp3" style="display: none;"></audio> <audio id="/assets/a2.mp3"
+                            style="display: none;"></audio> <audio id="/assets/a3.mp3" style="display: none;"></audio>
+                        <audio id="/assets/a4.mp3" style="display: none;"></audio> <audio id="/assets/a5.mp3"
+                            style="display: none;"></audio>
+                        <div id="onlinemusic" style="display: flex; width: 100%; flex-wrap: wrap;"></div>
+                    </div>
+                </div>
+                <div id="a" style="display: none;">
+                    <div id="wallpaperoption" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+                        <span> <img id="/assets/wallpaper.jpeg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
+                        <span><img id="/assets/rose.jpg" onclick="cb(this,0)"
+                                crossorigin="anonymous" /></span><span> <img id="/assets/bg2.jpeg" onclick="cb(this,0)"
+                                crossorigin="anonymous" /></span>
+                        <span> <img id="/assets/bg3.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
+                        <span> <img id="/assets/new2.jpg" onclick="cb(this,0)" crossorigin="anonymous" />
+                        </span><span><img id="/assets/new.jpg" onclick="cb(this,0)" crossorigin="anonymous" /> </span>
+                        <span><img id="/assets/rose-red.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span><img
+                                id="/assets/new4.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
+                        <span> <img id="/assets/new5.jpg" onclick="cb(this,0)"
+                                crossorigin="anonymous" /></span><span><img id="/assets/new8.jpg" onclick="cb(this,0)"
+                                crossorigin="anonymous" /> </span>
+                        <span><img id="/assets/new6.jpg" onclick="cb(this,0)" crossorigin="anonymous" />
+                        </span><span><img id="/assets/leaf.jpg" onclick="cb(this,0)" crossorigin="anonymous" /> </span>
+                        <span><img id="/assets/new8.png" onclick="cb(this,0)" crossorigin="anonymous" /></span><span>
+                            <img id="/assets/background.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span><span><img
+                                id="/assets/beach.jpg" onclick="cb(this,0)" crossorigin="anonymous" /></span>
+                    </div>
+                    <!-- Bg-color:
+                    <input type="color"
+                        onchange="$('#whole').css('background-image','none').css('background-color',this.value);$('#head').css('background-color','#4E4E4E');$('#msg-sender').css('background',this.value);"
+                        style="width: 60px; height: 20px; border-radius: 50%;" /> -->
+                    <div style="display: flex; flex-wrap: nowrap; justify-content: space-around;">
+                        <input type="file" id="chatbgupload" accept="image/*" onchange="cb(this,1)"
+                            style="display: none;" />
+                        <label for="chatbgupload"><i class="fa fa-plus"
+                                style="font-size: 1.3em; padding: 10px; background: green;" title="add background"
+                                aria-hidden="true"></i><span class="sr-only">add background</span></label>
+                        <i class="fa fa-close" style="font-size: 1.3em; padding: 10px; background: red;"
+                            onclick="cb(this,2)" title="remove background" aria-hidden="true"></i><span
+                            class="sr-only">remove background</span>
+                    </div>
+                </div>
+            </div>
+            <div id="chatroom" style="display: none; height: 100%;"></div>
+        </div>
+        <div id="videocallingpage">
+            <video id="selfview" style="display: flex;" class="large" autoplay muted playsinline></video>
+            <i class="fa fa-microphone-slash"
+                style="color: #fff; font-size: 1.1em; position: absolute; bottom: 50%; left: 50%; z-index: 10; visibility: hidden;"></i>
+            <div id="videocontainer"></div>
+            <div style="position: sticky; bottom: 30px; z-index: 6; margin: auto; display: flex; max-width: 360px; flex-wrap: nowrap; justify-content: space-between;"
+                id="controls">
+                <i class="fa fa-user-plus"
+                    style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;"
+                    title="Add users" id="adduser"></i>
+                <i class="fa fa-comment" id="displaychat"
+                    style="font-size: 1.8em; color: yellow; border-radius: 50%; width: 40px; height: 40px;"
+                    title="go to chat"
+                    onclick="$('#videocallingpage').hide();$('#chatroom').show();$(this).children(0).css('display','none').text('');$('#chat-parent').show();showheader('video');$('#content').attr('content','width=device-width,initial-scale=1.0,user-scalable=no');">
+                    <div class="notice-marker"></div>
+                </i>
+                <i class="fa fa-television"
+                    style="font-size: 1.8em; color: yellow; border-radius: 50%; width: 40px; height: 40px;"
+                    title="share screen" id="sharescreen"></i>
+                <i class="fa fa-refresh"
+                    style="font-size: 1.8em; color: rgb(3, 252, 252); border-radius: 50%; width: 40px; height: 40px;"
+                    title="toggle camera" id="togglecamera"></i>
+                <i id="videooff" title="on/off the camera" class="fa fa-video-camera"
+                    style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;"></i>
+                <i id="audiooff" title="on/off the microphone" class="fa fa-microphone"
+                    style="border-radius: 50%; font-size: 1.8em; color: #0f0; width: 40px; height: 40px;"></i>
+                <i title="hangup" class="fas fa-phone-slash" id="hangUpBtn"
+                    style="border-radius: 50%; color: #f00; font-size: 1.8em; width: 40px; height: 40px; display: flex;">
+                </i>
+            </div>
+        </div>
+        <div id="gameroom">
+            <div id="gobackbtn" onclick="GoBackGame()">
+                Back
+            </div>
+
+            <!-- https://supermario-game.com/mario-game/mario.html -->
+            <!--- This game was taken from supermario-game.com-->
+            <div id="allcards">
+                <div class="game_card">
+                    <div class="card_image"
+                        onclick="LaunchGame('https://kanhaiya-2000.github.io/game_factory/mario/mario-game/mario.html','Mario')"
+                        style="background-image:url(/assets/mario.jpeg)"></div>
+                    <div class="game_detail">
+                        Single player Advanced Mario
+                    </div>
+                </div>
+
+                <div class="game_card">
+                    <div class="card_image"
+                        onclick="LaunchGame('https://kanhaiya-2000.github.io/Astro-blaster/','Astroblaster')"
+                        style="background-image:url(/assets/Astroblaster.png)"></div>
+                    <div class="game_detail">
+                        Single player Astroblaster
+                    </div>
+                </div>
+                <div class="game_card">
+                    <div class="card_image" onclick="LaunchGame('https://kanhaiya-2000.github.io/chess/','chess')"
+                        style="background-image:url(/assets/chess.jpeg)"></div>
+                    <div class="game_detail">
+                        Single player chess
+                    </div>
+                </div>
+                <div class="game_card">
+                    <div class="card_image" onclick="LaunchGame('https://kanhaiya-2000.github.io/clumsy-bird/','chess')"
+                        style="background-image:url(/assets/flappybird.jpeg)"></div>
+                    <div class="game_detail">
+                        Flappy bird
+                    </div>
+                </div>
+                <div class="game_card">
+                    <div class="card_image" onclick="LaunchGame('https://kanhaiya-2000.github.io/mario','Mario')"
+                        style="background-image:url(/assets/mario.jpeg)"></div>
+                    <div class="game_detail">
+                        Single player Simple Mario
+                    </div>
+                </div>
+                <div class="game_card">
+                    <div class="card_image"
+                        onclick="LaunchGame('https://kkleap.github.io/Car-Racer-Vanilla-JS/','car race')"
+                        style="background-image:url(/assets/car_race.jpeg)"></div>
+                    <div class="game_detail">
+                        Car race
+                    </div>
+                </div>
+
+                <!-- <div class="game_card">
+                        <div class="card_image" onclick="LaunchGame('https://ludogame.herokuapp.com/','chess')" style="background-image:url(/assets/ludo.jpeg)"></div>
+                        <div class="game_detail">
+                            Ludo 
+                        </div>
+                    </div> -->
+
+            </div>
+            <div id="gamearea">
+
+            </div>
+
+        </div>
+        <div id="voicecallingpage">
+            <div id="audiocontainer" style="display: none;"></div>
+            <audio autoplay muted id="selfaudio"></audio>
+            <div id="controls2"
+                style="position: sticky; bottom: 30px; margin: auto; display: flex; max-width: 360px; flex-wrap: nowrap; justify-content: space-between;">
+                <i class="fa fa-user-plus"
+                    style="border-radius: 50%; font-size: 2em; color: #0f0; width: 50px; height: 50px;"
+                    title="Add users" id="adduser2"></i>
+                <i class="fa fa-comment"
+                    style="font-size: 2em; color: yellow; border-radius: 50%; width: 50px; height: 50px;"
+                    title="go to chat"
+                    onclick="$('#voicecallingpage').hide(450);$(this).children(0).css('display','none').text('');$('#chat-parent').show();$('#chatroom').show();showheader('voice');">
+                    <div class="notice-marker"></div>
+                </i>
+                <i id="audiooff2" title="on/off the microphone" class="fa fa-microphone"
+                    style="border-radius: 50%; font-size: 2em; color: #0f0; width: 50px; height: 50px;"></i>
+                <i title="hangup" class="fas fa-phone-slash" id="hangUpBtn2"
+                    style="border-radius: 50%; color: red; font-size: 2em; width: 50px; height: 50px; display: flex;">
+                </i>
+            </div>
+            <div id="showaudioconnection"
+                style="display: flex; flex-wrap: wrap; scrollbar-width: none; position: sticky; justify-content: space-around; max-width: 700px; top: 150px; overflow-x: auto;">
+            </div>
+        </div>
+        <div id="userlist"
+            style="width: 200px; max-height: 200px; animation: f 0.6s; position: fixed; overflow-y: auto; top: 140px; left: calc(50% - 100px); display: none; z-index: 2000;">
+            Select user to call<br /></div>
+
+        <div id="webcam" style="display: none; animation: f 0.8s;">
+            <div id="filteroption"
+                style="display: flex; flex-wrap: nowrap; justify-content: space-around; background: violet; color: white;">
+                <div id="brightness-filter" class="activefilter"><i class="fas fa-lightbulb"
+                        style="font-size: 1.4em;"></i></div>
+                <div id="contrast-filter"><i class="fas fa-table" style="font-size: 1.4em;"></i></div>
+                <div id="saturation-filter"><i class="fas fa-adjust" style="font-size: 1.4em;"></i></div>
+                <div id="hue-filter"><i class="fas fa-atom" style="font-size: 1.4em;"></i></div>
+                <div id="sepia-filter"><i class="fas fa-map" style="font-size: 1.4em;"></i></div>
+                <div id="opacity-filter"><i class="fa fa-angle-down" style="font-size: 1.4em;"></i></div>
+                <div id="invert-filter"><i class="fa fa-undo" style="font-size: 1.4em;"></i></div>
+                <div id="grayscale-filter"><i class="fa fa-cloud" style="font-size: 1.4em;"></i></div>
+                <div id="blur-filter"><i class="fa fa-tint" style="font-size: 1.4em;"></i></div>
+                <div id="crop-filter"><i class="fas fa-crop-alt" style="font-size: 1.4em;"></i></div>
+                <div id="custom-filter" style="display: none;"><i class="fa fa-filter" style="font-size: 1.4em;"></i>
+                </div>
+            </div>
+            <div style="width: 100%; background: black; height: 400px;">
+                <div id="canvas-cropper" style="position: absolute; top: 34px; left: 0px;">
+                    <div id="cropper-sieve" style="background: rgba(255, 0, 0, 0.3); display: none;"></div>
+                    <canvas id="filter-canvas"></canvas>
+                    <div id="cropper-grid"
+                        style="display: none; background: rgba(0, 255, 0, 0.3); position: absolute; top: 10px; width: 80px; height: 60px; border: 2px solid white; resize: both; overflow: auto;">
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-wrap: nowrap; width: 100%;">
+                <div id="add-img" style="background: #eabe11; padding: 8px 10px; width: 6.66%;">
+                    <input type="file" id="filterfile" accept="image/*" onchange="filterimgupload(this)" /><label
+                        for="filterfile"><i class="fas fa-plus" style="color: #4f534f; font-size: 1.8em;"></i></label>
+                </div>
+                <div id="camcontroller" style="width: 80%; background: violet;">
+                    <div id="camrange-div">
+                        <input type="range" min="0" max="200" id="camrange" style="width: 80%;" /><br />
+                        <span id="filter-name"></span>
+                    </div>
+                    <div style="display: none; flex-wrap: nowrap; justify-content: space-around; color: black;"
+                        id="cropper-tools">
+                        <i class="fa fa-check" id="done-cropping" style="padding: 6px 10px; background: green;"></i>
+                        <i class="fa fa-close" id="exit-cropping" style="padding: 6px 10px; background: red;"
+                            onclick="$('#brightness-filter').click()"></i>
+                    </div>
+                    <div id="custom-div"
+                        style="display: none; flex-wrap: nowrap; justify-content: space-between; color: red; font-size: 1.8em;">
+                        <div id="custom-div-sticker"><i class="fa fa-heart"></i></div>
+                        <div id="custom-div-write">📝</div>
+                        <div id="custom-div-flip"><i class="fa fa-refresh"></i></div>
+                    </div>
+                </div>
+                <div id="cancel-filter-img"
+                    style="background: #eabe11; width: 6.66%; padding: 8px 10px; border-right: 1px solid black; color: #4f534f;">
+                    <i class="fa fa-close" style="font-size: 1.8em;"></i></div>
+                <div id="send-filter-img" style="background: #eabe11; width: 6.66%; color: #4f534f; padding: 8px 10px;">
+                    <i class="fa fa-paper-plane" style="font-size: 1.8em;"></i></div>
+            </div>
+        </div>
+    </center>
+    <input type="file" accept="image/*" id="profilechangeinput" onchange="uploadToImgur(this)" />
+    <div id="replytomsg"
+        style="position: fixed; background: #353131; border-radius: 6px; border-left: 3px solid rgb(31, 31, 32); padding: 5px 5px 46px; display: none; flex-wrap: nowrap;">
+        <div style="width: 95%;" id="replyorrefer">
+            <a id="replytextparent" style="text-decoration: none;">
+                <div style="width: 100%;">
+                    <div id="replytexthead"
+                        style="width: 104%; padding: 2px 4px; text-align: left; border-bottom: 1px solid #888188; color: #f0e7e7;">
+                    </div>
+                    <div id="replytext"
+                        style="padding-left: 4px; word-break: break-all; color: #d2b6b6; padding-top: 3px;"></div>
+                </div>
+            </a>
+        </div>
+        <div style="padding-right: 8px; color: red; margin-top: -2px; margin-right: 2px;" id="replytextclose"
+            onclick="$(this).parent().hide(200);$('#replytextparent').attr('class','#');$('#replytext').text('');$('#replytexthead').text('');$('#message').focus()">
+            <i class="fa fa-close" style="font-weight: bold; font-size: 1.5em;"></i>
+        </div>
+    </div>
+
+    <script src="/script/serviceworkersetup.js"> </script>
+    <noscript>
+        👺️👺️ Your browser does not support javascript 👺️👺️!!
+    </noscript>
+    <script type="text/javascript" src="/script/socket.io.js"></script>
+    <!-- Photo filter script -->
+    <script src="/script/photofilter.js?v=1.1.1" async=""></script>
+    <script src="/script/setup.js?v=1.1.1"></script>
+    <script src="/script/kit.js"></script>
+    <script src="/script/Extrafeatures.js"></script>
+    <script src="/script/main.js?v=1.1.3"></script>
+    <script src="/script/nextstep.js?v=1.1.2"></script>
+    <script type="text/javascript">
+        //let beeper = document.getElementById('beeper');
+        window.addEventListener("appinstalled", (event) => {
+            Renderconfirm("Thanks for installing app 🎉🎉🎉!", true);
+        });
+        $("body").animate({ opacity: 1 });
+        if (localStorage.getItem("isSilent") == "true") {
+            beeper.checked = true;
+        } else {
+            beeper.checked = false;
+        }
+
+        if (localStorage.getItem("typingdisabled")) {
+            document.getElementById("typingtoggle").checked = true;
+        }
+        else {
+            document.getElementById("typingtoggle").checked = false;
+        }
+        localStorage.getItem("fullvideo") == "true" && ($(".large").first().css("object-fit", "cover"), (document.getElementById("fullvideo").checked = true)),
+            localStorage.getItem("fullvideo") == "false" && ($(".large").first().css("object-fit", ""), (document.getElementById("fullvideo").checked = false));
+        document.getElementById("fullvideo").addEventListener("click", function () {
+            localStorage.setItem("fullvideo", this.checked);
+            if (this.checked) $(".large").first().css("object-fit", "cover");
+            else $(".large").first().css("object-fit", "");
+        });
+        $("#videocallingpage video").each(function (v) {
+            v.onloadedmetadata = function () {
+                v.play();
+            };
+        });
+    </script>
+    <script>
+
+        /*! dom-to-image 10-06-2017 */
+!function(a){"use strict";function b(a,b){function c(a){return b.bgcolor&&(a.style.backgroundColor=b.bgcolor),b.width&&(a.style.width=b.width+"px"),b.height&&(a.style.height=b.height+"px"),b.style&&Object.keys(b.style).forEach(function(c){a.style[c]=b.style[c]}),a}return b=b||{},g(b),Promise.resolve(a).then(function(a){return i(a,b.filter,!0)}).then(j).then(k).then(c).then(function(c){return l(c,b.width||q.width(a),b.height||q.height(a))})}function c(a,b){return h(a,b||{}).then(function(b){return b.getContext("2d").getImageData(0,0,q.width(a),q.height(a)).data})}function d(a,b){return h(a,b||{}).then(function(a){return a.toDataURL()})}function e(a,b){return b=b||{},h(a,b).then(function(a){return a.toDataURL("image/jpeg",b.quality||1)})}function f(a,b){return h(a,b||{}).then(q.canvasToBlob)}function g(a){"undefined"==typeof a.imagePlaceholder?v.impl.options.imagePlaceholder=u.imagePlaceholder:v.impl.options.imagePlaceholder=a.imagePlaceholder,"undefined"==typeof a.cacheBust?v.impl.options.cacheBust=u.cacheBust:v.impl.options.cacheBust=a.cacheBust}function h(a,c){function d(a){var b=document.createElement("canvas");if(b.width=c.width||q.width(a),b.height=c.height||q.height(a),c.bgcolor){var d=b.getContext("2d");d.fillStyle=c.bgcolor,d.fillRect(0,0,b.width,b.height)}return b}return b(a,c).then(q.makeImage).then(q.delay(100)).then(function(b){var c=d(a);return c.getContext("2d").drawImage(b,0,0),c})}function i(a,b,c){function d(a){return a instanceof HTMLCanvasElement?q.makeImage(a.toDataURL()):a.cloneNode(!1)}function e(a,b,c){function d(a,b,c){var d=Promise.resolve();return b.forEach(function(b){d=d.then(function(){return i(b,c)}).then(function(b){b&&a.appendChild(b)})}),d}var e=a.childNodes;return 0===e.length?Promise.resolve(b):d(b,q.asArray(e),c).then(function(){return b})}function f(a,b){function c(){function c(a,b){function c(a,b){q.asArray(a).forEach(function(c){b.setProperty(c,a.getPropertyValue(c),a.getPropertyPriority(c))})}a.cssText?b.cssText=a.cssText:c(a,b)}c(window.getComputedStyle(a),b.style)}function d(){function c(c){function d(a,b,c){function d(a){var b=a.getPropertyValue("content");return a.cssText+" content: "+b+";"}function e(a){function b(b){return b+": "+a.getPropertyValue(b)+(a.getPropertyPriority(b)?" !important":"")}return q.asArray(a).map(b).join("; ")+";"}var f="."+a+":"+b,g=c.cssText?d(c):e(c);return document.createTextNode(f+"{"+g+"}")}var e=window.getComputedStyle(a,c),f=e.getPropertyValue("content");if(""!==f&&"none"!==f){var g=q.uid();b.className=b.className+" "+g;var h=document.createElement("style");h.appendChild(d(g,c,e)),b.appendChild(h)}}[":before",":after"].forEach(function(a){c(a)})}function e(){a instanceof HTMLTextAreaElement&&(b.innerHTML=a.value),a instanceof HTMLInputElement&&b.setAttribute("value",a.value)}function f(){b instanceof SVGElement&&(b.setAttribute("xmlns","http://www.w3.org/2000/svg"),b instanceof SVGRectElement&&["width","height"].forEach(function(a){var c=b.getAttribute(a);c&&b.style.setProperty(a,c)}))}return b instanceof Element?Promise.resolve().then(c).then(d).then(e).then(f).then(function(){return b}):b}return c||!b||b(a)?Promise.resolve(a).then(d).then(function(c){return e(a,c,b)}).then(function(b){return f(a,b)}):Promise.resolve()}function j(a){return s.resolveAll().then(function(b){var c=document.createElement("style");return a.appendChild(c),c.appendChild(document.createTextNode(b)),a})}function k(a){return t.inlineAll(a).then(function(){return a})}function l(a,b,c){return Promise.resolve(a).then(function(a){return a.setAttribute("xmlns","http://www.w3.org/1999/xhtml"),(new XMLSerializer).serializeToString(a)}).then(q.escapeXhtml).then(function(a){return'<foreignObject x="0" y="0" width="100%" height="100%">'+a+"</foreignObject>"}).then(function(a){return'<svg xmlns="http://www.w3.org/2000/svg" width="'+b+'" height="'+c+'">'+a+"</svg>"}).then(function(a){return"data:image/svg+xml;charset=utf-8,"+a})}function m(){function a(){var a="application/font-woff",b="image/jpeg";return{woff:a,woff2:a,ttf:"application/font-truetype",eot:"application/vnd.ms-fontobject",png:"image/png",jpg:b,jpeg:b,gif:"image/gif",tiff:"image/tiff",svg:"image/svg+xml"}}function b(a){var b=/\.([^\.\/]*?)$/g.exec(a);return b?b[1]:""}function c(c){var d=b(c).toLowerCase();return a()[d]||""}function d(a){return a.search(/^(data:)/)!==-1}function e(a){return new Promise(function(b){for(var c=window.atob(a.toDataURL().split(",")[1]),d=c.length,e=new Uint8Array(d),f=0;f<d;f++)e[f]=c.charCodeAt(f);b(new Blob([e],{type:"image/png"}))})}function f(a){return a.toBlob?new Promise(function(b){a.toBlob(b)}):e(a)}function g(a,b){var c=document.implementation.createHTMLDocument(),d=c.createElement("base");c.head.appendChild(d);var e=c.createElement("a");return c.body.appendChild(e),d.href=b,e.href=a,e.href}function h(){var a=0;return function(){function b(){return("0000"+(Math.random()*Math.pow(36,4)<<0).toString(36)).slice(-4)}return"u"+b()+a++}}function i(a){return new Promise(function(b,c){var d=new Image;d.onload=function(){b(d)},d.onerror=c,d.src=a})}function j(a){var b=3e4;return v.impl.options.cacheBust&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime()),new Promise(function(c){function d(){if(4===g.readyState){if(200!==g.status)return void(h?c(h):f("cannot fetch resource: "+a+", status: "+g.status));var b=new FileReader;b.onloadend=function(){var a=b.result.split(/,/)[1];c(a)},b.readAsDataURL(g.response)}}function e(){h?c(h):f("timeout of "+b+"ms occured while fetching resource: "+a)}function f(a){console.error(a),c("")}var g=new XMLHttpRequest;g.onreadystatechange=d,g.ontimeout=e,g.responseType="blob",g.timeout=b,g.open("GET",a,!0),g.send();var h;if(v.impl.options.imagePlaceholder){var i=v.impl.options.imagePlaceholder.split(/,/);i&&i[1]&&(h=i[1])}})}function k(a,b){return"data:"+b+";base64,"+a}function l(a){return a.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")}function m(a){return function(b){return new Promise(function(c){setTimeout(function(){c(b)},a)})}}function n(a){for(var b=[],c=a.length,d=0;d<c;d++)b.push(a[d]);return b}function o(a){return a.replace(/#/g,"%23").replace(/\n/g,"%0A")}function p(a){var b=r(a,"border-left-width"),c=r(a,"border-right-width");return a.scrollWidth+b+c}function q(a){var b=r(a,"border-top-width"),c=r(a,"border-bottom-width");return a.scrollHeight+b+c}function r(a,b){var c=window.getComputedStyle(a).getPropertyValue(b);return parseFloat(c.replace("px",""))}return{escape:l,parseExtension:b,mimeType:c,dataAsUrl:k,isDataUrl:d,canvasToBlob:f,resolveUrl:g,getAndEncode:j,uid:h(),delay:m,asArray:n,escapeXhtml:o,makeImage:i,width:p,height:q}}function n(){function a(a){return a.search(e)!==-1}function b(a){for(var b,c=[];null!==(b=e.exec(a));)c.push(b[1]);return c.filter(function(a){return!q.isDataUrl(a)})}function c(a,b,c,d){function e(a){return new RegExp("(url\\(['\"]?)("+q.escape(a)+")(['\"]?\\))","g")}return Promise.resolve(b).then(function(a){return c?q.resolveUrl(a,c):a}).then(d||q.getAndEncode).then(function(a){return q.dataAsUrl(a,q.mimeType(b))}).then(function(c){return a.replace(e(b),"$1"+c+"$3")})}function d(d,e,f){function g(){return!a(d)}return g()?Promise.resolve(d):Promise.resolve(d).then(b).then(function(a){var b=Promise.resolve(d);return a.forEach(function(a){b=b.then(function(b){return c(b,a,e,f)})}),b})}var e=/url\(['"]?([^'"]+?)['"]?\)/g;return{inlineAll:d,shouldProcess:a,impl:{readUrls:b,inline:c}}}function o(){function a(){return b(document).then(function(a){return Promise.all(a.map(function(a){return a.resolve()}))}).then(function(a){return a.join("\n")})}function b(){function a(a){return a.filter(function(a){return a.type===CSSRule.FONT_FACE_RULE}).filter(function(a){return r.shouldProcess(a.style.getPropertyValue("src"))})}function b(a){var b=[];return a.forEach(function(a){try{q.asArray(a.cssRules||[]).forEach(b.push.bind(b))}catch(c){console.log("Error while reading CSS rules from "+a.href,c.toString())}}),b}function c(a){return{resolve:function(){var b=(a.parentStyleSheet||{}).href;return r.inlineAll(a.cssText,b)},src:function(){return a.style.getPropertyValue("src")}}}return Promise.resolve(q.asArray(document.styleSheets)).then(b).then(a).then(function(a){return a.map(c)})}return{resolveAll:a,impl:{readAll:b}}}function p(){function a(a){function b(b){return q.isDataUrl(a.src)?Promise.resolve():Promise.resolve(a.src).then(b||q.getAndEncode).then(function(b){return q.dataAsUrl(b,q.mimeType(a.src))}).then(function(b){return new Promise(function(c,d){a.onload=c,a.onerror=d,a.src=b})})}return{inline:b}}function b(c){function d(a){var b=a.style.getPropertyValue("background");return b?r.inlineAll(b).then(function(b){a.style.setProperty("background",b,a.style.getPropertyPriority("background"))}).then(function(){return a}):Promise.resolve(a)}return c instanceof Element?d(c).then(function(){return c instanceof HTMLImageElement?a(c).inline():Promise.all(q.asArray(c.childNodes).map(function(a){return b(a)}))}):Promise.resolve(c)}return{inlineAll:b,impl:{newImage:a}}}var q=m(),r=n(),s=o(),t=p(),u={imagePlaceholder:void 0,cacheBust:!1},v={toSvg:b,toPng:d,toJpeg:e,toBlob:f,toPixelData:c,impl:{fontFaces:s,images:t,util:q,inliner:r,options:{}}};"undefined"!=typeof module?module.exports=v:a.domtoimage=v}(this);
+
+    </script>
+</body>
+
 </html>
