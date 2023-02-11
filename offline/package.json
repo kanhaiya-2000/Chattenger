@@ -15,7 +15,7 @@
     "fs": "0.0.1-security",
     "helmet": "^4.1.0",
     "https": "^1.0.0",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.20",
     "os": "^0.1.1",
     "password-hash": "^1.2.2",
     "socket.io": "^2.4.0"
