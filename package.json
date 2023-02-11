@@ -16,7 +16,7 @@
     "helmet": "^4.6.0",
     "https": "^1.0.0",
     "nodemailer": "^6.7.1",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "password-hash": "^1.2.2",
     "socket.io": "^2.4.1"
   },
